@@ -1,0 +1,14 @@
+# Local IDE settings
+.idea/
+.vscode/
+.vs/
+
+# Python environments and bytecode
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Local artifacts
+.DS_Store
+.research/
