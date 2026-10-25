@@ -1,6 +1,6 @@
 # agent-guidelines
 
-[![Checks](https://img.shields.io/github/actions/workflow/status/vladleesi/agent-guidelines/check.yml?branch=main&event=push&style=flat-square&label=checks)](https://github.com/vladleesi/agent-guidelines/actions/workflows/check.yml) [![Release](https://img.shields.io/github/v/release/vladleesi/agent-guidelines?style=flat-square&color=7c3aed)](https://github.com/vladleesi/agent-guidelines/releases/latest) [![MIT](https://img.shields.io/github/license/vladleesi/agent-guidelines?style=flat-square&color=0ea5e9)](LICENSE)
+[![Checks](https://img.shields.io/github/actions/workflow/status/vladleesi/agent-guidelines/check.yml?branch=main&style=flat-square&label=checks)](https://github.com/vladleesi/agent-guidelines/actions/workflows/check.yml?query=branch%3Amain) [![Release](https://img.shields.io/github/v/release/vladleesi/agent-guidelines?style=flat-square&color=7c3aed)](https://github.com/vladleesi/agent-guidelines/releases/latest) [![MIT](https://img.shields.io/github/license/vladleesi/agent-guidelines?style=flat-square&color=0ea5e9)](LICENSE)
 
 Pick a few Markdown modules, pin a release, and compose them into your project's
 `AGENTS.md`. Shared defaults for coding agents, with **your project rules in charge**.
@@ -9,14 +9,20 @@ Pick a few Markdown modules, pin a release, and compose them into your project's
 
 Ask the agent working in your project:
 
-> Integrate https://github.com/vladleesi/agent-guidelines at v1.0.2 using that release's README.
-> Inspect existing instructions and select relevant modules at appropriate directory scopes.
-> Consolidate duplicates only when the remaining rules preserve their meaning, scope,
-> strength, and exceptions for every affected agent. Keep project-specific constraints
-> and overrides outside generated sections. Use the supplied synchronizer and configure
-> documented discovery for the agents this repository uses. Verify with `--check` and
-> `git diff --check`, then summarize changes and any limitations. Change only
-> instruction-related files and integration metadata.
+```text
+Integrate https://github.com/vladleesi/agent-guidelines at v1.0.2
+using that release's README.
+
+Inspect existing instructions and select relevant modules at appropriate directory
+scopes. Consolidate duplicates only when the remaining rules preserve their meaning,
+scope, strength, and exceptions for every affected agent. Keep project-specific
+constraints and overrides outside generated sections.
+
+Use the supplied synchronizer and configure documented discovery for the agents
+this repository uses. Verify with --check and git diff --check, then summarize
+changes and any limitations. Change only instruction-related files and integration
+metadata.
+```
 
 <details>
 <summary>Prefer commands? Git + Python 3.11+ are all you need.</summary>
