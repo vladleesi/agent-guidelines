@@ -19,7 +19,8 @@
 - Version the collection together using immutable `vMAJOR.MINOR.PATCH` tags,
   starting at `v1.0.0`. Use MAJOR for incompatible changes, MINOR for compatible
   additions, and PATCH for compatible fixes. Record material changes in `CHANGELOG.md`.
-- Validate the finished commit before tagging. Never move a published tag; release
-  corrections under a new version. Keep releases manual unless a concrete need arises.
+- Use the first dated entry in `CHANGELOG.md` as the release version and notes.
+  CI creates its tag and GitHub Release only after all checks pass on that commit
+  on `main`. Never move published tags or replace release notes; use a new version.
 - Keep the README a short working entry point. Put discovery caveats and source
   rationale in the existing documents rather than expanding the quick start.

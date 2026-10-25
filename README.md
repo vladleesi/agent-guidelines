@@ -1,89 +1,84 @@
 # agent-guidelines
 
-Modular coding-agent instructions, composed into a project's `AGENTS.md` and
-pinned to an immutable Git release. No runtime service or package dependencies.
+[![Checks](https://img.shields.io/github/actions/workflow/status/vladleesi/agent-guidelines/check.yml?branch=main&event=push&style=flat-square&label=checks)](https://github.com/vladleesi/agent-guidelines/actions/workflows/check.yml) [![Release](https://img.shields.io/github/v/release/vladleesi/agent-guidelines?style=flat-square&color=7c3aed)](https://github.com/vladleesi/agent-guidelines/releases/latest) [![MIT](https://img.shields.io/github/license/vladleesi/agent-guidelines?style=flat-square&color=0ea5e9)](LICENSE)
 
-## Modules
+Pick a few Markdown modules, pin a release, and compose them into your project's
+`AGENTS.md`. Shared defaults for coding agents, with **your project rules in charge**.
 
-Choose only what the project needs; modules have no implicit dependencies.
+## 🚀 Quick start
 
-| Module | Responsibility |
+Ask the agent working in your project:
+
+> Integrate https://github.com/vladleesi/agent-guidelines at v1.0.1 using its README.
+> Select only relevant modules, preserve existing project instructions, and configure
+> discovery for the agents this repository uses. Change only instruction-related files.
+
+<details>
+<summary>Prefer commands? Git + Python 3.11+ are all you need.</summary>
+
+From your project's root:
+
+```sh
+git clone --branch v1.0.1 --depth 1 https://github.com/vladleesi/agent-guidelines.git /tmp/agent-guidelines-v1.0.1
+python3 /tmp/agent-guidelines-v1.0.1/scripts/sync.py \
+  --target . --ref v1.0.1 --modules general agent-workflow frontend security testing
+```
+
+</details>
+
+> [!TIP]
+> Keep your existing `AGENTS.md`. Local rules **outside the generated markers**
+> take precedence; updates replace only the shared section. Never edit that section by hand.
+
+Commit `AGENTS.md` and `.agent-guidelines.json` in your project. Agents read the
+instructions locally, with no network or source checkout needed.
+
+## 🧩 Pick your modules
+
+Modules have no implicit dependencies. Select only what the project needs.
+
+| Module | Covers |
 | --- | --- |
 | [general](modules/general.md) | Code, boundaries, maintainability, documentation |
 | [agent-workflow](modules/agent-workflow.md) | Exploration, context, tools, completion |
-| [testing](modules/testing.md) | Risk-based checks and behavioral tests |
+| [testing](modules/testing.md) | Focused checks and behavioral tests |
 | [security](modules/security.md) | Trust boundaries, secrets, dependencies |
 | [delivery](modules/delivery.md) | Git, CI, GitHub Actions, releases |
 | [kotlin](modules/kotlin.md) | Kotlin, coroutines, Android, Multiplatform |
 | [compose](modules/compose.md) | State, effects, lifecycle, adaptive UI |
 | [backend](modules/backend.md) | APIs, persistence, concurrency, operations |
-| [python](modules/python.md) | Python types, resources, async, tooling |
+| [python](modules/python.md) | Types, resources, async, tooling |
 | [frontend](modules/frontend.md) | Browser UI, accessibility, production assets |
 
-## Use in a project
+**Kotlin UI:** `general agent-workflow kotlin compose testing security delivery`
 
-Ask the coding agent working in your project:
+**Python service:** `general agent-workflow python backend testing security delivery`
 
-> Integrate https://github.com/vladleesi/agent-guidelines at v1.0.0 using its README.
-> Select only modules relevant to this project, preserve existing project instructions,
-> and configure discovery for the agents this repository uses. Change only instruction-related files.
+For mixed repositories, sync specialized modules into the relevant subdirectory.
+Avoid repeating modules already selected in a parent scope.
 
-For manual setup, use Git and Python 3.11+ from the consuming project's root:
+Codex and Cursor discover `AGENTS.md`. For Claude Code configurations that need
+an adapter, add `@AGENTS.md` to the existing `CLAUDE.md`. Copilot support varies
+by interface: see [compatibility](docs/compatibility.md).
 
-```sh
-git clone --branch v1.0.0 --depth 1 https://github.com/vladleesi/agent-guidelines.git /tmp/agent-guidelines-v1.0.0
-python3 /tmp/agent-guidelines-v1.0.0/scripts/sync.py \
-  --target . --ref v1.0.0 --modules general agent-workflow frontend security testing
-```
+## 🔄 Update on your terms
 
-Leave your existing `AGENTS.md` in place. The synchronizer appends a managed
-section and replaces only that section on updates. Keep project architecture,
-commands, workflows, and exceptions **outside** its markers; these local rules
-take precedence over shared defaults. For example, local build-approval rules
-still apply. Review duplicated local rules before removing them, and never edit
-the generated section by hand.
+Clone the desired release and run its synchronizer with
+`--target /path/to/project --ref vX.Y.Z`. It reuses the saved module selection;
+`--modules ...` replaces it. Review and commit the generated diff.
 
-Commit `AGENTS.md` and `.agent-guidelines.json` in your project. Agents read both
-local and shared instructions from `AGENTS.md`; they need no network access or
-source checkout.
+Use `--check` with the matching source checkout to detect drift offline.
+The saved pin records both tag and commit, and same-version tag changes are rejected.
+Projects never update automatically.
 
-For Kotlin UI, select `general agent-workflow kotlin compose testing security delivery`.
-For a Python service, select `general agent-workflow python backend testing security delivery`.
-Run against a subdirectory to create a separately pinned, directory-scoped
-`AGENTS.md`; avoid selecting the same modules at both root and child scope.
+## Maintain & release
 
-Codex and Cursor discover `AGENTS.md`. Current Claude Code also supports it, with
-conditions; for older versions or an existing `CLAUDE.md`, add `@AGENTS.md` to that
-file (the [adapter](adapters/CLAUDE.md) contains just this import). Copilot support
-depends on the interface. See [compatibility and discovery](docs/compatibility.md).
+Run `python3 -m unittest discover -s tests -v` and `git diff --check`.
+Add a dated version entry at the top of [CHANGELOG.md](CHANGELOG.md), then push to
+`main`: CI creates its `vX.Y.Z` tag and GitHub Release **after both test jobs pass**
+on that commit. Reruns preserve published releases; rerun the workflow on `main`
+to retry a failed publication. Use SemVer and never move published tags.
 
-Include this repository's [MIT notice](LICENSE) with redistributed guidelines;
-keep it separate from your project's own license, for example in third-party notices.
-
-## Update intentionally
-
-Clone the desired release into a new source directory, then run its synchronizer
-with `--target /path/to/project --ref vX.Y.Z`. The saved module selection is reused;
-pass `--modules ...` to replace it. Review the generated diff and commit the update.
-Never consume a moving branch automatically.
-
-To verify offline against the recorded release, rerun the same source checkout
-with `--target /path/to/project --check`. This detects drift without writing.
-The manifest records both tag and commit; a moved tag is rejected for that pin.
-Generation reads committed module blobs, so local source edits cannot affect output.
-Keep the source checkout if you need offline regeneration.
-
-## Maintain this collection
-
-```sh
-python3 -m unittest discover -s tests -v
-git diff --check
-```
-
-Release the entire collection together using SemVer and immutable `vX.Y.Z` tags,
-starting at `v1.0.0`: MAJOR for incompatible changes, MINOR for compatible additions,
-PATCH for compatible fixes. Record changes and migrations in [CHANGELOG.md](CHANGELOG.md),
-validate the finished commit, then create and push an annotated tag manually.
-Do not move released tags. Repository maintenance rules live in [AGENTS.md](AGENTS.md)
-and are never composed into consumer instructions. [Design notes](docs/design.md)
-record the source evidence and the small set of deliberate tradeoffs.
+Repository-only instructions live in [AGENTS.md](AGENTS.md); [design notes](docs/design.md)
+explain the sources and tradeoffs. Include the [MIT notice](LICENSE) when
+redistributing these guidelines, separately from your own project's license.

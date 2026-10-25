@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.1 — 2026-10-25
+
+- Create version tags and GitHub Releases from the changelog after both CI test
+  jobs pass on the exact `main` commit; preserve existing releases on reruns.
+- Refresh the README with flat-square badges, a clearer quick start, and concise
+  guidance for module selection, local rules, and intentional updates.
+
 ## 1.0.0 — 2026-10-25
 
 - Add ten independently selectable engineering and agent-workflow modules.
