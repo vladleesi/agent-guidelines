@@ -10,7 +10,7 @@ Pick a few Markdown modules, pin a release, and compose them into your project's
 Ask the agent working in your project:
 
 ```text
-Integrate https://github.com/vladleesi/agent-guidelines at v1.0.2
+Integrate https://github.com/vladleesi/agent-guidelines at v1.0.3
 using that release's README.
 
 Inspect existing instructions and select relevant modules at appropriate directory
@@ -30,9 +30,9 @@ metadata.
 From your project's root:
 
 ```sh
-git clone --branch v1.0.2 --depth 1 https://github.com/vladleesi/agent-guidelines.git /tmp/agent-guidelines-v1.0.2
-python3 /tmp/agent-guidelines-v1.0.2/scripts/sync.py \
-  --target . --ref v1.0.2 --modules general agent-workflow frontend security testing
+git clone --branch v1.0.3 --depth 1 https://github.com/vladleesi/agent-guidelines.git /tmp/agent-guidelines-v1.0.3
+python3 /tmp/agent-guidelines-v1.0.3/scripts/sync.py \
+  --target . --ref v1.0.3 --modules general agent-workflow frontend security testing
 ```
 
 </details>
