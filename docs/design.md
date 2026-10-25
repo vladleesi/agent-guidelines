@@ -1,4 +1,4 @@
-# Design and sources
+# Design notes
 
 The offline composer reads selected `modules/*.md` blobs from a release commit,
 writes one marked section, and records the tag, commit, and ordered selection.
@@ -13,21 +13,6 @@ After interrupted I/O, rerun sync and review both files before committing.
 The initial pin trusts the selected release; later syncs reject a different commit
 for the same saved tag.
 
-## Project evidence
-
-Source, dependencies, tests, workflows, local instructions, and relevant branches
-were inspected. GitHub branch inventories were checked against local commits.
-
-| Project snapshot | Practices retained |
-| --- | --- |
-| [sideword-chat-server, `49604b7`](https://github.com/vladleesi/sideword-chat-server/tree/49604b71f30018a330ddd239befb83dbc37725ea), `develop` and `main` | Explicit HTTP/WebSocket boundaries, isolated test data, delivery/concurrency regression tests, redacted errors, concise authoritative docs. |
-| [vladleesi.github.io, `15b21ea`](https://github.com/vladleesi/vladleesi.github.io/tree/15b21ea5eafe11f41c71067faec941433314ff0a), `main`; compared `take-control` | Semantic static HTML, progressive enhancement, local assets, production-output checks, measured performance. The design branch changes presentation, not universal visual rules. |
-| [braindance, `22f2a8d`](https://github.com/vladleesi/braindance/tree/22f2a8de2025d37c34eb42c2caf94efdb353cf67), `develop` and `master`; compared `design-kit` and inspected `web-app` | Common/platform boundaries, read-only state, constructor dependencies, shared Compose UI, API tests, multi-target validation. `design-kit` is older; `web-app` contains deployment output rather than development source. |
-| [links, `8fc21c6`](https://github.com/vladleesi/links/tree/8fc21c6acffb4fab31ac4c88b722d90eb8a64f08), `main` | Schema-validated configuration, safe URLs, configuration/presentation separation, local asset provenance, checked release artifacts. |
-
-The inspected trees had no nested `AGENTS.md`. Braindance and Links also supplied
-local instruction files outside their public snapshots. No analyzed checkout was modified.
-
 ## Curation decisions
 
 - Retain a rule when it prevents a concrete failure or guides a recurring decision.
@@ -35,8 +20,8 @@ local instruction files outside their public snapshots. No analyzed checkout was
   modules. Avoid arbitrary limits, speculative abstractions, and mandated architectures.
 - Match validation to risk and authorization. No blanket build prohibition or
   mandatory test run for every documentation edit.
-- Use GitHub Action version tags as explicitly requested, acknowledging that tags
-  can move. Publisher review and CI privilege separation follow
+- Use readable GitHub Action version tags, acknowledging that tags can move.
+  Publisher review and CI privilege separation follow
   [GitHub's secure-use reference](https://docs.github.com/en/actions/reference/security/secure-use).
 - Preserve cancellation in [Kotlin](https://kotlinlang.org/docs/cancellation-and-timeouts.html)
   and [Python](https://docs.python.org/3/library/asyncio-exceptions.html), and use

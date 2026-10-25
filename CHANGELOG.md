@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.2 — 2026-10-25
+
+- Remove unrelated project references and research history from public design notes.
+
 ## 1.0.1 — 2026-10-25
 
 - Create version tags and GitHub Releases from the changelog after both CI test

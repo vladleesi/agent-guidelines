@@ -9,7 +9,7 @@ Pick a few Markdown modules, pin a release, and compose them into your project's
 
 Ask the agent working in your project:
 
-> Integrate https://github.com/vladleesi/agent-guidelines at v1.0.1 using its README.
+> Integrate https://github.com/vladleesi/agent-guidelines at v1.0.2 using its README.
 > Select only relevant modules, preserve existing project instructions, and configure
 > discovery for the agents this repository uses. Change only instruction-related files.
 
@@ -19,9 +19,9 @@ Ask the agent working in your project:
 From your project's root:
 
 ```sh
-git clone --branch v1.0.1 --depth 1 https://github.com/vladleesi/agent-guidelines.git /tmp/agent-guidelines-v1.0.1
-python3 /tmp/agent-guidelines-v1.0.1/scripts/sync.py \
-  --target . --ref v1.0.1 --modules general agent-workflow frontend security testing
+git clone --branch v1.0.2 --depth 1 https://github.com/vladleesi/agent-guidelines.git /tmp/agent-guidelines-v1.0.2
+python3 /tmp/agent-guidelines-v1.0.2/scripts/sync.py \
+  --target . --ref v1.0.2 --modules general agent-workflow frontend security testing
 ```
 
 </details>
