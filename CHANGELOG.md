@@ -2,8 +2,16 @@
 
 ## 1.0.3 — 2026-10-25
 
-- Clarify the README integration prompt to consolidate duplicate instructions while
-  preserving their scope, strength, exceptions, and project-specific overrides.
+- Make the README prompt copyable and default to a self-contained, one-time import
+  that preserves rule wording, removes equivalent duplicates, and retains
+  project-specific constraints and overrides.
+- Document temporary synchronization checks, final text and discovery verification,
+  source attribution and licensing, and upstream access only on explicit request.
+  Keep maintained synchronization as an optional workflow.
+- Align README examples with `v1.0.3` and record repository guidance to update all
+  release pins together without version bumps for README-only corrections.
+- Keep the checks badge in the shared flat-square style and include all workflow
+  events on `main`, with a matching branch-filtered workflow link.
 
 ## 1.0.2 — 2026-10-25
 
