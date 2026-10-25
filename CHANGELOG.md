@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.3 — 2026-10-25
+
+- Clarify the README integration prompt to consolidate duplicate instructions while
+  preserving their scope, strength, exceptions, and project-specific overrides.
+
 ## 1.0.2 — 2026-10-25
 
 - Remove unrelated project references and research history from public design notes.

@@ -9,9 +9,14 @@ Pick a few Markdown modules, pin a release, and compose them into your project's
 
 Ask the agent working in your project:
 
-> Integrate https://github.com/vladleesi/agent-guidelines at v1.0.2 using its README.
-> Select only relevant modules, preserve existing project instructions, and configure
-> discovery for the agents this repository uses. Change only instruction-related files.
+> Integrate https://github.com/vladleesi/agent-guidelines at v1.0.2 using that release's README.
+> Inspect existing instructions and select relevant modules at appropriate directory scopes.
+> Consolidate duplicates only when the remaining rules preserve their meaning, scope,
+> strength, and exceptions for every affected agent. Keep project-specific constraints
+> and overrides outside generated sections. Use the supplied synchronizer and configure
+> documented discovery for the agents this repository uses. Verify with `--check` and
+> `git diff --check`, then summarize changes and any limitations. Change only
+> instruction-related files and integration metadata.
 
 <details>
 <summary>Prefer commands? Git + Python 3.11+ are all you need.</summary>
