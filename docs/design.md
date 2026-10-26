@@ -11,23 +11,36 @@ request; attribution links do not authorize fetching upstream.
 
 Prepare each module selection with the pinned release's synchronizer in an empty
 temporary target directory, then run `--check` against that target with the same
-source checkout. This verifies the staged generated section and manifest. Copy the
-selected module headings and rules into the consumer's instruction files, leaving
-the staging manifest, managed markers, and generated synchronization notice out.
+source checkout. This verifies the staged generated section and manifest. Organize
+selected rules by topic with any existing instructions, leaving the staging
+manifest, managed markers, and generated synchronization notice out.
 Retain source attribution and state directory scope and project-specific
 precedence outside the imported text. Preserve unrelated files and customizations.
 
-Deduplication removes whole redundant rules or copies, never rewrites their
-wording. Prefer an imported rule over an equivalent existing general rule only
-when meaning, scope, strength, exceptions, and coverage for the affected agents
-match. A newer source alone does not establish equivalence. Retain partial
-overlaps unchanged, preserve project-specific constraints as explicit overrides,
-and report contradictions that precedence does not resolve. Use nested files
-where they preserve useful scope; a path heading in a root file is a textual
-instruction, not a discovery mechanism. See [instruction discovery](compatibility.md).
+Consolidate sections by topic while preserving directory, language, platform, and
+agent scope. Source module headings and order may change, but keep retained
+imported rules verbatim as complete bullets, including continuation text. Do not
+split or merge imported rules. Between imported rules, remove only wholly redundant
+copies; keep partial overlaps unchanged.
+
+Only locally maintained instructions in the target repository may be rewritten;
+preserve global, organization-managed, generated, and unrelated instructions unless
+their modification is explicitly authorized. Local instructions may be split,
+shortened, rewritten, or removed to deduplicate meaning if every distinct
+requirement, scope, strength, exception, and affected agent remains covered. For a
+partial overlap, keep the imported rule intact and retain only additional local
+requirements. A newer source alone does not establish equivalence. Preserve stronger
+or conflicting project-specific requirements as concise overrides outside imported
+text. Retain uncertain requirements and report contradictions that precedence does
+not resolve. Use nested files where they preserve useful scope; a path heading in
+a root file is a textual instruction, not a discovery mechanism. See
+[instruction discovery](compatibility.md).
 
 After placement and deduplication, compare every retained imported rule with its
-pinned source, verify scope and agent discovery, and review `git diff --check`.
+pinned source, check for lost local requirements, verify scope and agent discovery,
+and review `git diff --check`. Add adapters or configuration only when needed;
+report discovery checks and limitations in the final summary without adding
+standard discovery explanations to the consumer's instructions.
 The staging `--check` does not validate the final consolidated files. A one-time
 import has no ongoing synchronization contract; do not run sync against those
 files unless a maintained integration is explicitly requested.

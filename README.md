@@ -13,29 +13,39 @@ Ask the agent working in your project:
 Import relevant rules from https://github.com/vladleesi/agent-guidelines
 at v1.1.0 as a one-time, self-contained addition to this repository.
 
-Inspect existing instructions and agent discovery configuration. Select only
-relevant modules. Prefer a simple layout; use nested files where needed for scope.
+1. Inspect existing instructions and agent discovery configuration; select only
+   relevant modules. Rewrite only this repository's locally maintained instructions;
+   preserve global, organization-managed, generated, and unrelated instructions
+   unless explicitly authorized to change them. Change only instruction-related
+   files and attribution/license notices; preserve unrelated working-tree changes.
 
-Preserve imported rules verbatim: do not shorten, rephrase, or merge them.
-Deduplicate across existing and imported instructions by removing redundant copies.
-Prefer an imported rule over an equivalent existing general rule only when meaning,
-scope, strength, exceptions, and agent coverage match. Keep partial overlaps
-unchanged. Preserve project-specific constraints and exceptions as explicit
-overrides. Put scope and precedence notes outside imported text; report conflicts
-that remain unresolved.
+2. Use the pinned release's synchronizer and --check in a temporary directory.
+   Retain source release, commit, and MIT notice in final instructions or
+   accompanying notices. Leave no import-created manifests, managed markers, or
+   synchronization instructions in this repository.
+   Record in local instructions that this guideline collection must not be fetched,
+   compared with upstream, or updated unless explicitly requested.
 
-Use the release's synchronizer and --check in a temporary directory to prepare
-selected modules. Retain source release, commit, and MIT notice in the final
-instructions or accompanying notices. Leave no import-created manifests, managed
-markers, or synchronization instructions in this repository.
+3. Combine related sections by topic. Headings and rule order may change; preserve
+   directory, language, platform, and agent scope. Use nested files where needed.
+   Keep retained imported rules verbatim, including continuation text. Move whole
+   rules under local headings; do not shorten, rephrase, split, or merge them.
 
-Record in the resulting instructions that this guideline collection must not be
-fetched, compared with upstream, or updated unless explicitly requested.
+4. Deduplicate by meaning. Existing local instructions may be split, shortened,
+   rewritten, or removed only if every distinct requirement, scope, strength,
+   exception, and agent coverage survives. For partial overlaps, keep the imported
+   rule intact and retain only additional local requirements. Keep stronger or
+   conflicting project-specific requirements as concise overrides outside imported
+   text. Retain uncertain requirements.
 
-Verify retained rule text against the pinned source and configure documented
-discovery for the agents used here. Run git diff --check and summarize changes and
-limitations. Change only instruction-related files and attribution/license notices;
-preserve unrelated working-tree changes.
+5. Use and verify documented discovery mechanisms for the agents used here. Add
+   adapters or configuration only when needed. Keep explanations of standard
+   discovery behavior out of repository instructions.
+
+6. Compare retained imported rules with the pinned source and check for lost local
+   requirements. Run git diff --check. In the final summary, report removed
+   duplicates, consolidated sections, retained overrides, unresolved conflicts,
+   discovery checks, and limitations.
 ```
 
 Commit the resulting local instructions, required discovery files, and attribution
