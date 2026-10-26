@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.1.1 — 2026-10-25
+
+### Reusable agent guidelines
+
+- Compact all ten modules while preserving requirements, authorization boundaries,
+  security, cancellation, validation, and release safeguards. Keep modules
+  independently usable and retain their names and scopes.
+
+### Repository updates
+
+- Shorten repository instructions, the import prompt, and integration documentation;
+  retain verbatim pinned imports, project precedence, licensing, and both workflows.
+- Clarify Codex's configurable 32 KiB project-instruction budget and refresh source
+  references. Synchronization, manifests, markers, CI, and published releases remain
+  unchanged.
+
 ## 1.1.0 — 2026-10-25
 
 ### Reusable agent guidelines

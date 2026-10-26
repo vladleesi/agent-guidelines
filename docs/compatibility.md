@@ -1,36 +1,33 @@
 # Instruction discovery
 
-Verified against official documentation on 2026-10-25. These are documented
-discovery mechanisms, not a claim that live sessions were tested in every product.
+Verified against official docs on 2026-10-25; live sessions were not tested in
+every product.
 
 | Agent/interface | Use of the local instructions |
 | --- | --- |
-| [Codex](https://learn.chatgpt.com/docs/agent-configuration/agents-md) | Reads `AGENTS.md` along the repository-root-to-working-directory chain. `AGENTS.override.md` takes precedence at the same level. Start from the relevant directory; inspect deeper instructions before editing there. The combined discovery budget defaults to 32 KiB. |
-| [Claude Code](https://code.claude.com/docs/en/memory#agentsmd) | Current versions load `AGENTS.md` when no project `CLAUDE.md` or `CLAUDE.local.md` takes priority. For older versions, disabled native support, or an existing Claude instruction file, put `@AGENTS.md` in a sibling `CLAUDE.md`. This is a documented import, not a Markdown link. |
+| [Codex](https://learn.chatgpt.com/docs/agent-configuration/agents-md) | Reads the root-to-working-directory `AGENTS.md` chain; `AGENTS.override.md` wins at the same level. Start in the relevant directory; inspect deeper instructions before editing there. Combined project discovery defaults to 32 KiB (`project_doc_max_bytes`). |
+| [Claude Code](https://code.claude.com/docs/en/memory#agentsmd) | Current defaults load `AGENTS.md` unless project `CLAUDE.md`/`CLAUDE.local.md` takes priority. For older versions, disabled native support, or existing Claude instructions, import with `@AGENTS.md` in a sibling `CLAUDE.md`. A Markdown link is not an import. |
 | [Cursor Agent](https://cursor.com/docs/rules#agentsmd) | Supports root and nested `AGENTS.md`; directory-specific instructions combine with parent instructions. No `.cursor/rules` copy is needed. |
-| [Copilot](https://docs.github.com/en/copilot/reference/custom-instructions-support) | The CLI, cloud agent, and supported IDE features read `AGENTS.md`. Support differs by interface: GitHub.com Chat and some IDE/review surfaces use `.github/copilot-instructions.md` without native agent-file support. Check the linked support matrix for your surface. |
+| [Copilot](https://docs.github.com/en/copilot/reference/custom-instructions-support) | CLI, cloud agent, and supported IDE features read `AGENTS.md`. GitHub.com Chat and some IDE/review surfaces use `.github/copilot-instructions.md` without native agent-file support. Check the support matrix for your interface. |
 
-For a Copilot interface without native support, explicitly attach the local
-`AGENTS.md` when that interface supports file context, or use an interface with
-native discovery. A pointer in `.github/copilot-instructions.md` is **not** a
-portable import and cannot guarantee loading in review or chat features without
-file-reading tools. This collection intentionally does not promise support there
-through a misleading adapter or maintain a second copy of the rules.
+Without native Copilot support, attach `AGENTS.md` if file context is supported,
+or switch to an interface with native discovery. A `.github/copilot-instructions.md`
+pointer is **not** a portable import; it cannot guarantee loading without file-reading
+tools. No adapter or second rule copy is provided for these interfaces.
 
-The optional Claude adapter contains only `@AGENTS.md`. Copy it into a new sibling
-`CLAUDE.md`, or add that line to the existing file without overwriting customizations.
-For nested instructions, add a sibling adapter at that scope when required by your
-Claude version/configuration. Modern Claude deduplicates imported agent files.
+The optional [Claude adapter](../adapters/CLAUDE.md) contains only `@AGENTS.md`.
+Copy to a new sibling `CLAUDE.md` or append to an existing file without overwriting
+customizations. Add nested sibling adapters where required by version/configuration.
+Modern Claude deduplicates imported agent files.
 
-Selection happens during integration. One-time imports preserve selected rule
-wording while removing redundant copies; maintained synchronization includes the
-full text of selected modules. Discovery is the same for both workflows: agents
-read local instructions without fetching this repository or following links to
-module files. For mixed repositories, place specialized rules in the relevant
-directory and retain only broadly applicable guidance at the root. Directory
-loading differs by tool; start in the applicable scope and confirm loaded context
-using that tool's instruction/context inspection feature where available.
+Select modules during integration. One-time imports keep rule wording and remove
+redundant copies; maintained sync includes full selected modules. Both workflows
+use local discovery without fetching upstream or following module links. In mixed
+repositories, scope specialized rules to relevant directories and broad guidance
+to the root. Loading varies by tool: start in the applicable scope and inspect
+loaded instructions/context where supported.
 
-Restart or refresh sessions after updates as required by the tool. Global settings,
-overrides, organization policies, context limits, and disabled instruction loading
-can affect discovery. Instructions guide behavior; they are not a security boundary.
+Restart/refresh after updates as required. Global settings, overrides, organization
+policies, context limits, and disabled loading affect discovery. Codex's configurable
+32 KiB project budget is not a universal agent limit; leave room for local rules
+and other loaded project instructions. Instructions are not a security boundary.

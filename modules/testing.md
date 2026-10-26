@@ -1,21 +1,21 @@
 # Testing and validation
 
-- Choose focused checks for changed behavior. Broaden coverage for shared APIs,
-  packaging, or platform changes. Documentation-only changes normally need link,
-  example, and diff review unless project requirements call for broader validation.
-- Test observable contracts with meaningful success, boundary, and failure cases.
-  Avoid tests that restate implementation or lock down incidental structure.
-- For a bug, reproduce the failure and add a regression test when practical. Test
-  the shared cause and affected integration points, not only the immediate symptom.
-- Keep tests deterministic and isolated from live services and user data. Use test
-  credentials, temporary resources, controlled clocks, and explicit cleanup.
-  Exercise concurrency with synchronization rather than timing guesses.
-- Mock external boundaries when appropriate, retaining integration tests for
-  serialization, persistence, framework behavior, and other contracts mocks can hide.
-- Check cancellation, retries, authorization failures, and data-loss paths when
-  affected. Verify migrations against representative disposable data.
-- For UI changes, use interaction, visual, browser, or device checks where static
-  tests cannot establish correctness; cover the affected states and platforms.
-- Validate the actual distributable when build output or delivery changes. Do not
-  infer production behavior or performance from a development server alone.
+- Focus checks on changed behavior; broaden for shared APIs, packaging, or
+  platform changes. Docs-only edits normally need link, example, and diff review
+  unless project policy requires more.
+- Test observable contracts with meaningful success, boundary, and failure
+  cases; avoid restating implementation or locking down incidental structure.
+- Reproduce bugs; add regression tests when practical. Cover shared causes and
+  affected integration points beyond the immediate symptom.
+- Keep tests deterministic and isolated from live services and user data. Use
+  test credentials, temporary resources, controlled clocks, and explicit
+  cleanup. Synchronize concurrency tests instead of guessing timing.
+- Mock external boundaries where appropriate; retain integration tests for
+  serialization, persistence, framework behavior, and contracts mocks can hide.
+- Check affected cancellation, retry, authorization-failure, and data-loss
+  paths. Verify migrations with representative disposable data.
+- Use interaction, visual, browser, or device checks where static UI tests
+  cannot establish correctness; cover affected states and platforms.
+- Validate the distributable when build output or delivery changes. A dev server
+  alone cannot establish production behavior or performance.
 - Fix failures without weakening assertions or budgets just to pass.

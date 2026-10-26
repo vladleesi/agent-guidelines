@@ -1,26 +1,26 @@
 # Kotlin, Android, and Multiplatform
 
-- Prefer precise types, immutable values, and explicit nullability. Use sealed
-  hierarchies or enums for closed state sets; avoid unchecked casts, unnecessary
-  `!!`, and scope-function chains that obscure control flow.
-- Keep common source sets free of platform APIs. Put platform behavior behind a
-  small interface or `expect`/`actual` only when shared code needs it. Confirm each
-  dependency and API supports every affected target and source set.
-- Use structured concurrency with an owner whose lifetime matches the work. Keep
-  blocking I/O off UI/event-loop threads and inject dispatchers when substitution
-  is needed. Do not add unowned scopes to bypass lifecycle cancellation.
-- Preserve cancellation: rethrow `CancellationException` when catching broad
-  exceptions, including in `runCatching` recovery. Handle expected failures explicitly
-  and release resources on cancellation. Define how overlapping requests affect state.
-- Expose read-only state and keep mutations with their owner. Use atomic updates
-  or synchronization for concurrent changes; model loading, empty, success, and
-  failure when the UI or caller distinguishes them.
-- On Android, respect lifecycle, process recreation, permissions, and background
-  execution constraints. Persist only state that must survive recreation; do not
-  retain activities or views in longer-lived owners.
-- Reuse the Gradle wrapper and existing dependency catalog/conventions. Keep plugin,
-  Kotlin, runtime, SDK, and compiler compatibility aligned. Scope experimental
-  opt-ins narrowly and verify migrations against supported targets.
-- Put portable behavior tests in common tests and platform contracts in the relevant
-  platform tests. Compile affected source sets; success on one target does not prove
-  compatibility with the others.
+- Prefer precise types, immutable values, and explicit nullability. Model closed
+  states with sealed hierarchies or enums; avoid unchecked casts, unnecessary
+  `!!`, and scope-function chains that obscure flow.
+- Keep platform APIs out of common source sets. Use small interfaces or
+  `expect`/`actual` only when shared code needs platform behavior. Verify
+  dependency and API support for every affected target and source set.
+- Use structured concurrency owned for the work's lifetime. Keep blocking I/O
+  off UI/event-loop threads; inject dispatchers when substitution is needed.
+  Never use unowned scopes to bypass lifecycle cancellation.
+- Rethrow `CancellationException` in broad catches, including `runCatching`
+  recovery. Handle expected failures explicitly; release resources on
+  cancellation. Define overlapping requests' effects on state.
+- Expose read-only state; keep mutations with its owner. Use atomic updates or
+  synchronization for concurrency; distinguish loading, empty, success, and
+  failure where callers or UI need it.
+- Respect Android lifecycle, process recreation, permissions, and background
+  limits. Persist only state that must survive recreation; never retain
+  activities or views in longer-lived owners.
+- Reuse the Gradle wrapper, dependency catalog, and conventions. Align plugin,
+  Kotlin, runtime, SDK, and compiler compatibility. Scope experimental opt-ins
+  narrowly; verify migrations on supported targets.
+- Test portable behavior in common tests and platform contracts in platform
+  tests. Compile affected source sets; one target's success does not establish
+  others' compatibility.

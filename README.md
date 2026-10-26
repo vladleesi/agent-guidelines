@@ -2,8 +2,8 @@
 
 [![Checks](https://img.shields.io/github/check-suites/vladleesi/agent-guidelines/main?style=flat-square&label=checks)](https://github.com/vladleesi/agent-guidelines/actions?query=branch%3Amain) [![Release](https://img.shields.io/github/v/release/vladleesi/agent-guidelines?style=flat-square&color=7c3aed)](https://github.com/vladleesi/agent-guidelines/releases/latest) [![MIT](https://img.shields.io/github/license/vladleesi/agent-guidelines?style=flat-square&color=0ea5e9)](LICENSE)
 
-Import selected Markdown rules into your project's `AGENTS.md` from a pinned
-release. Shared defaults for coding agents, with **your project rules in charge**.
+Import selected Markdown rules from a pinned release into your project's
+`AGENTS.md`. **Project rules override shared defaults.**
 
 ## 🚀 Quick start
 
@@ -11,47 +11,43 @@ Ask the agent working in your project:
 
 ```text
 Import relevant rules from https://github.com/vladleesi/agent-guidelines
-at v1.1.0 as a one-time, self-contained addition to this repository.
+at v1.1.1 as a one-time, self-contained addition to this repository.
 
-1. Inspect existing instructions and agent discovery configuration; select only
-   relevant modules. Rewrite only this repository's locally maintained instructions;
-   preserve global, organization-managed, generated, and unrelated instructions
-   unless explicitly authorized to change them. Change only instruction-related
-   files and attribution/license notices; preserve unrelated working-tree changes.
+1. Inspect instructions and agent discovery configuration; select relevant modules.
+   Change only instruction-related files and attribution/license notices. Rewrite
+   only locally maintained instructions; preserve global, organization-managed,
+   generated, and unrelated instructions unless explicitly authorized. Preserve
+   unrelated working-tree changes.
 
-2. Use the pinned release's synchronizer and --check in a temporary directory.
-   Retain source release, commit, and MIT notice in final instructions or
-   accompanying notices. Leave no import-created manifests, managed markers, or
-   synchronization instructions in this repository.
-   Record in local instructions that this guideline collection must not be fetched,
-   compared with upstream, or updated unless explicitly requested.
+2. Stage with the pinned synchronizer and --check in a temporary directory. Retain
+   source release, commit, selected modules, and MIT notice in final instructions
+   or accompanying notices. Leave no import-created manifests, managed markers, or
+   sync instructions. Record that fetching, comparing with, or updating this
+   collection requires explicit request.
 
-3. Combine related sections by topic. Headings and rule order may change; preserve
-   directory, language, platform, and agent scope. Use nested files where needed.
-   Keep retained imported rules verbatim, including continuation text. Move whole
-   rules under local headings; do not shorten, rephrase, split, or merge them.
+3. Group by topic; headings/order may change. Preserve directory, language,
+   platform, and agent scope; use nested files where needed. Keep retained imported
+   bullets verbatim, including continuation text: never rephrase, shorten, split,
+   or merge them.
 
-4. Deduplicate by meaning. Existing local instructions may be split, shortened,
-   rewritten, or removed only if every distinct requirement, scope, strength,
-   exception, and agent coverage survives. For partial overlaps, keep the imported
-   rule intact and retain only additional local requirements. Keep stronger or
-   conflicting project-specific requirements as concise overrides outside imported
-   text. Retain uncertain requirements.
+4. Remove only wholly redundant imported copies. Rewrite/deduplicate local rules
+   only if every requirement, scope, strength, exception, and affected agent remains
+   covered. For partial overlaps, retain imported bullets and additional local
+   requirements. Keep stronger/conflicting project requirements as concise overrides
+   outside imported text; retain uncertain requirements.
 
-5. Use and verify documented discovery mechanisms for the agents used here. Add
-   adapters or configuration only when needed. Keep explanations of standard
-   discovery behavior out of repository instructions.
+5. Verify documented discovery for agents used here. Add adapters/config only as
+   needed; omit standard discovery explanations from repository instructions.
 
-6. Compare retained imported rules with the pinned source and check for lost local
-   requirements. Run git diff --check. In the final summary, report removed
-   duplicates, consolidated sections, retained overrides, unresolved conflicts,
-   discovery checks, and limitations.
+6. Compare retained imports with pinned source; check for lost local requirements.
+   Run git diff --check. Report removed duplicates, grouped sections, retained
+   overrides, unresolved conflicts, discovery checks, and limitations.
 ```
 
-Commit the resulting local instructions, required discovery files, and attribution
-and license notices. Agents need no manifest, network, or source checkout.
-See [integration details](docs/design.md#integration-workflows) for verification
-and the optional maintained workflow below for deliberate synchronization.
+Commit the instructions, required discovery files, and attribution/license notices.
+Agents need no manifest, network, or source checkout. See
+[integration details](docs/design.md#integration-workflows) and the optional
+maintained workflow below.
 
 ## 🧩 Pick your modules
 
@@ -77,9 +73,8 @@ Modules have no implicit dependencies. Select only what the project needs.
 For mixed repositories, place specialized rules in the relevant subdirectory.
 Avoid repeating modules already selected in a parent scope.
 
-Codex and Cursor discover `AGENTS.md`. For Claude Code configurations that need
-an adapter, add `@AGENTS.md` to the existing `CLAUDE.md`. Copilot support varies
-by interface: see [compatibility](docs/compatibility.md).
+See [compatibility](docs/compatibility.md) for agent discovery, Claude adapters,
+and Copilot interface limitations.
 
 ## 🔄 Optional maintained synchronization
 
@@ -89,7 +84,7 @@ Git and Python 3.11+ are required only when synchronizing.
 From your project's root, set the release once:
 
 ```sh
-guidelines_ref=v1.1.0
+guidelines_ref=v1.1.1
 guidelines_dir="/tmp/agent-guidelines-$guidelines_ref"
 
 git clone --branch "$guidelines_ref" --depth 1 \
@@ -107,9 +102,8 @@ To update a maintained integration, clone the desired release and run its
 synchronizer with `--target /path/to/project --ref vX.Y.Z`. It reuses the saved
 module selection; `--modules ...` replaces it. Review and commit the generated diff.
 
-Use `--check` with the matching source checkout to detect drift offline.
-The saved pin records both tag and commit, and same-version tag changes are rejected.
-Projects never update automatically.
+Add `--check` to the sync command to detect drift offline without writing.
+The saved tag/commit pin rejects moved tags. Projects never update automatically.
 
 ## Maintain & release
 
