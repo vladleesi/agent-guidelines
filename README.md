@@ -1,6 +1,6 @@
 # agent-guidelines
 
-[![Checks](https://img.shields.io/github/actions/workflow/status/vladleesi/agent-guidelines/check.yml?branch=main&style=flat-square&label=checks)](https://github.com/vladleesi/agent-guidelines/actions/workflows/check.yml?query=branch%3Amain) [![Release](https://img.shields.io/github/v/release/vladleesi/agent-guidelines?style=flat-square&color=7c3aed)](https://github.com/vladleesi/agent-guidelines/releases/latest) [![MIT](https://img.shields.io/github/license/vladleesi/agent-guidelines?style=flat-square&color=0ea5e9)](LICENSE)
+[![Checks](https://img.shields.io/github/check-suites/vladleesi/agent-guidelines/main?style=flat-square&label=checks)](https://github.com/vladleesi/agent-guidelines/actions?query=branch%3Amain) [![Release](https://img.shields.io/github/v/release/vladleesi/agent-guidelines?style=flat-square&color=7c3aed)](https://github.com/vladleesi/agent-guidelines/releases/latest) [![MIT](https://img.shields.io/github/license/vladleesi/agent-guidelines?style=flat-square&color=0ea5e9)](LICENSE)
 
 Import selected Markdown rules into your project's `AGENTS.md` from a pinned
 release. Shared defaults for coding agents, with **your project rules in charge**.
@@ -11,7 +11,7 @@ Ask the agent working in your project:
 
 ```text
 Import relevant rules from https://github.com/vladleesi/agent-guidelines
-at v1.0.3 as a one-time, self-contained addition to this repository.
+at v1.1.0 as a one-time, self-contained addition to this repository.
 
 Inspect existing instructions and agent discovery configuration. Select only
 relevant modules. Prefer a simple layout; use nested files where needed for scope.
@@ -49,11 +49,11 @@ Modules have no implicit dependencies. Select only what the project needs.
 
 | Module | Covers |
 | --- | --- |
-| [general](modules/general.md) | Code, boundaries, maintainability, documentation |
-| [agent-workflow](modules/agent-workflow.md) | Exploration, context, tools, completion |
+| [general](modules/general.md) | Conventions, decisions, code, docs, published sites |
+| [agent-workflow](modules/agent-workflow.md) | Exploration, tools, required validation, completion |
 | [testing](modules/testing.md) | Focused checks and behavioral tests |
-| [security](modules/security.md) | Trust boundaries, secrets, dependencies |
-| [delivery](modules/delivery.md) | Git, CI, GitHub Actions, releases |
+| [security](modules/security.md) | Trust boundaries, secrets, privacy, dependencies |
+| [delivery](modules/delivery.md) | Git, CI, versioning, releases, deployment costs |
 | [kotlin](modules/kotlin.md) | Kotlin, coroutines, Android, Multiplatform |
 | [compose](modules/compose.md) | State, effects, lifecycle, adaptive UI |
 | [backend](modules/backend.md) | APIs, persistence, concurrency, operations |
@@ -76,12 +76,17 @@ by interface: see [compatibility](docs/compatibility.md).
 Choose this workflow to retain a generated section for deliberate future updates.
 Git and Python 3.11+ are required only when synchronizing.
 
-From your project's root:
+From your project's root, set the release once:
 
 ```sh
-git clone --branch v1.0.3 --depth 1 https://github.com/vladleesi/agent-guidelines.git /tmp/agent-guidelines-v1.0.3
-python3 /tmp/agent-guidelines-v1.0.3/scripts/sync.py \
-  --target . --ref v1.0.3 --modules general agent-workflow frontend security testing
+guidelines_ref=v1.1.0
+guidelines_dir="/tmp/agent-guidelines-$guidelines_ref"
+
+git clone --branch "$guidelines_ref" --depth 1 \
+  https://github.com/vladleesi/agent-guidelines.git "$guidelines_dir"
+python3 "$guidelines_dir/scripts/sync.py" \
+  --target . --ref "$guidelines_ref" \
+  --modules general agent-workflow frontend security testing
 ```
 
 Keep project-specific rules outside the generated markers; they take precedence.

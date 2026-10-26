@@ -19,12 +19,16 @@
 - Version the collection together using immutable `vMAJOR.MINOR.PATCH` tags,
   starting at `v1.0.0`. Use MAJOR for incompatible changes, MINOR for compatible
   additions, and PATCH for compatible fixes. Record material changes in `CHANGELOG.md`.
+- Separate reusable rule changes from repository maintenance in changelog entries
+  using `### Reusable agent guidelines` and `### Repository updates`; omit empty
+  sections.
 - Use the first dated entry in `CHANGELOG.md` as the release version and notes.
   CI creates its tag and GitHub Release only after all checks pass on that commit
   on `main`. Never move published tags or replace release notes; use a new version.
-- Update all README release pins together, including the prompt, clone command,
-  checkout paths, and `--ref`. Use the version being released when preparing a
-  release; use the latest published stable release when correcting stale examples.
-  Do not increment the collection version for README-only corrections.
+- Keep one version variable in README shell examples and derive versioned checkout
+  paths, clone refs, and sync refs from it. Update it and the prompt's release pin
+  together. Use the version being released when preparing a release; use the latest
+  published stable release when correcting stale examples. Do not increment the
+  collection version for README-only corrections.
 - Keep the README a short working entry point. Put discovery caveats and source
   rationale in the existing documents rather than expanding the quick start.

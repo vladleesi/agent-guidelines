@@ -1,8 +1,8 @@
 # Testing and validation
 
-- Start with focused checks for changed behavior, then run required validation
-  for the finished change. Broaden coverage for shared APIs, packaging, or platform
-  changes. Documentation-only changes normally need link, example, and diff review.
+- Choose focused checks for changed behavior. Broaden coverage for shared APIs,
+  packaging, or platform changes. Documentation-only changes normally need link,
+  example, and diff review unless project requirements call for broader validation.
 - Test observable contracts with meaningful success, boundary, and failure cases.
   Avoid tests that restate implementation or lock down incidental structure.
 - For a bug, reproduce the failure and add a regression test when practical. Test

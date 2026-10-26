@@ -1,5 +1,27 @@
 # Changelog
 
+## 1.1.0 — 2026-10-25
+
+### Reusable agent guidelines
+
+- Strengthen disclosure review, secret handling, privacy, and incident guidance while
+  preserving legitimate public attribution and project metadata.
+- Respect recorded user decisions, optional tooling, and existing version, tag,
+  release, and action-pinning conventions; clarify adopted SemVer 2.0.0 rules.
+- Require available project checks before readiness or commits, stop after push-only
+  tasks, and support authorized CI investigation, fixing, and verification.
+- Cover existing published websites and require authorization for deployments,
+  infrastructure provisioning, paid services, and recurring cost increases.
+
+### Repository updates
+
+- Refresh module descriptions and source rationale without changing synchronization,
+  discovery, module names, manifests, or managed markers.
+- Read current `main` check-suite status in the README badge so queued or running
+  checks are represented instead of reusing the previous workflow result.
+- Set the README shell example's release in one variable, derive its versioned
+  temporary checkout path, and record the convention in repository instructions.
+
 ## 1.0.3 — 2026-10-25
 
 - Make the README prompt copyable and default to a self-contained, one-time import

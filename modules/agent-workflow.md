@@ -20,6 +20,11 @@
 - Complete the authorized scope. Repeat checks only when relevant edits, failures,
   or new evidence invalidate earlier results. Stop research and tuning once the
   requested outcome and required validation are satisfied.
+- Before presenting work as ready or committing, run all applicable project-required
+  checks available in the environment, including relevant tests, linting, formatting,
+  compilation, and validation. Targeted checks may suffice where project policy
+  allows; never skip required checks to save time. Fix issues introduced by the change.
 - Report the result, relevant evidence, and material limitations concisely.
-  Distinguish observations from assumptions and unrun checks from passing checks;
-  never claim publication or deployment without evidence.
+  Distinguish observations from assumptions; identify failed, skipped, unavailable,
+  or inconclusive checks rather than claiming they passed. Never claim publication
+  or deployment without evidence.

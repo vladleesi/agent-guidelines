@@ -55,9 +55,24 @@ for the same saved tag.
   Keep shared principles in general modules and platform mechanisms in specialized
   modules. Avoid arbitrary limits, speculative abstractions, and mandated architectures.
 - Match validation to risk and authorization. No blanket build prohibition or
-  mandatory test run for every documentation edit.
-- Use readable GitHub Action version tags, acknowledging that tags can move.
-  Publisher review and CI privilege separation follow
+  mandatory test run for every documentation edit. Project-required checks still
+  apply; push-only tasks end after reporting the result, while requested CI fixing
+  includes relevant investigation and verification within the granted authorization.
+- Consumer versioning and release conventions remain optional and project-owned.
+  [SemVer 2.0.0](https://semver.org/spec/v2.0.0.html) supplies the compatibility,
+  deprecation, pre-release, and metadata rules only where adopted. This collection's
+  own stable `vMAJOR.MINOR.PATCH` tags and release workflow are maintenance policy,
+  not a template imposed on consumer projects; the synchronizer accepts stable tags
+  only, independently of consumers' versioning schemes.
+- Disclosure review and incident handling follow
+  [OWASP secrets management](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html)
+  and [GitHub's sensitive-data guidance](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository).
+  Revocation or rotation addresses exposed credentials; history cleanup needs
+  separate authorization and does not erase copies elsewhere. Legitimate public
+  attribution and contact information remain useful project content.
+- Respect consumers' action and workflow pinning policies. Full commit SHAs identify
+  immutable revisions; version tags can move. This repository's CI retains its
+  existing explicit version tags. Publisher review and CI privilege separation follow
   [GitHub's secure-use reference](https://docs.github.com/en/actions/reference/security/secure-use).
 - Preserve cancellation in [Kotlin](https://kotlinlang.org/docs/cancellation-and-timeouts.html)
   and [Python](https://docs.python.org/3/library/asyncio-exceptions.html), and use
@@ -68,7 +83,3 @@ for the same saved tag.
   [Anthropic's context guidance](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents).
   This is a qualitative design rationale, not measured proof of agent performance.
   Discovery behavior comes from [official sources](compatibility.md).
-- [Ponytail](https://github.com/DietrichGebert/ponytail/blob/main/skills/ponytail/SKILL.md)
-  was reviewed for reuse and minimal scope. No upstream text or implementation is
-  copied; persona, intensity modes, mandatory self-checks, and shortest-diff rules
-  are excluded. Correctness and maintainability take priority over token savings.
