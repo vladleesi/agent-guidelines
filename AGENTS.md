@@ -2,8 +2,11 @@
 
 - Keep reusable rules in `modules/`. This file governs this repository only;
   never generate it into consumer instructions.
-- Give each rule one owning module, usable without implicit imports or
-  companions. Split only for practical reuse.
+- Give each rule one owning module. Keep modules independently usable without
+  implicit imports or required companions. Split only for practical reuse.
+- Keep security, authorization, and required-verification safeguards in Core.
+  Task guidance needs explicit read-before-work routes; headings alone do not
+  control loading. Validate placement and coverage when changing either section.
 - Write direct, observable rules. Remove agent defaults unless they address a
   demonstrated failure or useful engineering constraint.
 - Exclude project commands, infrastructure, personal details, and vendor
@@ -20,8 +23,8 @@
 - Version the collection together with immutable `vMAJOR.MINOR.PATCH` tags from
   `v1.0.0`: MAJOR for incompatibility, MINOR for compatible additions, PATCH for
   compatible fixes. Record material changes in `CHANGELOG.md`.
-- Separate changelog entries into `### Reusable agent guidelines` and `###
-  Repository updates`; omit empty sections.
+- Separate changelog entries into `### Reusable agent guidelines` and
+  `### Repository updates`; omit empty sections.
 - The first dated changelog entry supplies the release version/notes. CI creates
   its tag and GitHub Release only after all checks pass on that `main` commit.
   Never move published tags or replace release notes; use a new version.

@@ -1,5 +1,7 @@
 # Kotlin, Android, and Multiplatform
 
+## Task guidance
+
 - Prefer precise types, immutable values, and explicit nullability. Model closed
   states with sealed hierarchies or enums; avoid unchecked casts, unnecessary
   `!!`, and scope-function chains that obscure flow.

@@ -1,5 +1,7 @@
 # Security and dependencies
 
+## Core
+
 - Validate untrusted input at trust boundaries: config, paths, URLs, payload
   sizes, and external responses. Parse safely, parameterize queries, and escape
   output for its destination; input filtering alone is insufficient.

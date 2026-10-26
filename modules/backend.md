@@ -1,5 +1,7 @@
 # Backend services
 
+## Task guidance
+
 - Define request/response contracts, deliberately reject unsupported inputs, and
   map failures to stable protocol errors without sensitive details.
 - Bound requests, upstream calls, queues, and connections with timeouts and

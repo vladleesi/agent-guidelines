@@ -1,5 +1,7 @@
 # Compose UI
 
+## Task guidance
+
 - Keep composables focused on rendering state and emitting events. Hoist state
   to the lowest owner that needs control; pass values and callbacks to reusable
   components instead of acquiring screen dependencies internally.
@@ -15,7 +17,8 @@
 - Reuse theme tokens, resources, and components. Lay out by available
   constraints, not device labels or assumed sizes; account for text scaling,
   localization, input methods, and window insets.
-- Provide accessible semantics, meaningful actions, focus, and adequate targets.
+- Provide accessible semantics, meaningful actions, focus behavior, and adequate
+  interaction targets.
   Verify keyboard, pointer, and touch on relevant platforms; accessibility
   support differs by platform.
 - Keep expensive work out of frequent recomposition. Memoize with correct keys

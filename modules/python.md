@@ -1,5 +1,7 @@
 # Python
 
+## Task guidance
+
 - Use the project's supported interpreter and isolated environment. Declare
   runtime and dev dependencies; avoid import-time network, filesystem, and
   config side effects.

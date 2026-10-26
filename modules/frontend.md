@@ -1,5 +1,7 @@
 # Web frontend
 
+## Task guidance
+
 - Use semantic HTML and native controls before recreating browser behavior.
   Provide accessible names, visible focus, keyboard operation, meaningful
   heading order, and loading, empty, invalid, and failure feedback.
@@ -14,7 +16,7 @@
   unavailable storage and network failures without breaking unrelated
   interactions.
 - Preserve history, reloadable deep links, and URL/base-path behavior as public
-  contracts. Do not keep information needed after reload only in memory.
+  contracts. Do not keep navigation information needed after reload only in memory.
 - Measure production output before optimizing. Reserve media dimensions, size
   and compress assets appropriately, and defer noncritical work. Avoid
   speculative preloading or caching; match cache policy to whether asset URLs

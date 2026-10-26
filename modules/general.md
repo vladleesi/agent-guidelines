@@ -1,5 +1,7 @@
 # General engineering
 
+## Core
+
 - Preserve unrelated working-tree changes and out-of-scope behavior. Update
   affected callers, configuration, and docs without incidental rewrites or
   upgrades.
@@ -7,6 +9,9 @@
   get approval for project-wide convention changes. Revisit accepted or rejected
   decisions only on request or materially changed requirements. Consult project
   context before asking answered questions.
+
+## Task guidance
+
 - Record useful lasting decisions in existing instructions or relevant docs; do
   not create config or documents for trivial preferences.
 - Prefer explicit names and clear control flow over dense expressions. Explain
@@ -26,8 +31,8 @@
 - Optimize measured bottlenecks with representative workloads. Define cache
   lifetime, keys, and invalidation; avoid speculative complexity.
 - Keep one authoritative explanation per topic; update affected setup, usage,
-  contracts, and limitations. Keep README concise; put advanced details in
-  existing docs first.
+  contracts, and limitations. Keep README a concise entry point; put advanced
+  details in existing docs first.
 - Keep public docs relevant to project users. Exclude unrelated promotion,
   personal infrastructure, and private development context without user value.
   Preserve copyright, licensing, provenance, legitimate contributor and support

@@ -1,5 +1,32 @@
 # Changelog
 
+## 1.2.0 — 2026-10-26
+
+### Reusable agent guidelines
+
+- Add independently selectable `git`, `ci`, `release`, and `deployment` modules.
+  Deprecate `delivery` but retain its published wording for compatibility.
+  Retain action-specific authorization,
+  validation, history protection, and cost approval without required companions.
+- Restore qualifiers lost during compaction: applicable project checks, sequencing
+  edits, repeated unchanged CI checks, and navigation state needed after reload.
+  Clarify Compose interaction targets, README purpose, and authorized changes to
+  existing release conventions.
+- Mark Core and Task guidance within the 13 recommended modules for selective placement;
+  preserve every rule verbatim and keep security and authorization gates in Core.
+
+### Repository updates
+
+- Document optional replacement of `delivery` and update README examples/pins.
+  Existing selections remain valid; no automatic aliases, updates, or selection
+  changes are introduced. Synchronizer interfaces and behavior are unchanged.
+- Cover independent operational selections, legacy pins, compatible upgrades,
+  and explicit selection changes with synchronization regression tests.
+- Default new one-time imports to a local core plus explicitly routed task guidance
+  when the agent can read local files. Document eager and directory-scoped fallbacks,
+  discovery differences, context measurements, and import coverage checks. Keep the
+  maintained synchronizer's full inline output and public interfaces unchanged.
+
 ## 1.1.1 — 2026-10-25
 
 ### Reusable agent guidelines

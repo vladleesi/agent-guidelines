@@ -1,5 +1,7 @@
 # Testing and validation
 
+## Task guidance
+
 - Focus checks on changed behavior; broaden for shared APIs, packaging, or
   platform changes. Docs-only edits normally need link, example, and diff review
   unless project policy requires more.
