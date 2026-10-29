@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.4.0 — 2026-10-29
+
+### Reusable agent guidelines
+
+- Add Core safeguards for read-only reviews and unavailable deployment guidance
+  or settings. Clarify that optimization and deployment requests do not authorize
+  higher recurring costs; resolve uncertain billing impact before applying changes.
+- Extend `security` to cover provenance, notices, and use/redistribution permissions
+  for copied code, fonts, icons, assets, and data without imposing a license or tool.
+- Consolidate deployment preflight guidance and extend the existing `frontend`
+  cache rule for fingerprinted static assets and revalidatable HTML entry points.
+
+### Repository updates
+
+- Update README release pins, source rationale, context measurements, and Core
+  placement coverage for the new safeguards.
+
 ## 1.3.0 — 2026-10-28
 
 ### Reusable agent guidelines

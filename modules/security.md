@@ -36,6 +36,10 @@
   reproducibility. Before adoption or upgrades, review transitive changes,
   advisories, install scripts, provenance, platform support, and license
   obligations.
+- Record provenance, licenses, and required notices for copied code, fonts,
+  icons, assets, and data using the project's existing mechanism. Verify intended
+  use and redistribution permissions; do not assume the project license covers
+  third-party material.
 - Prioritize exploitable vulnerabilities and affected deployment paths. Keep
   accepted exceptions scoped, justified, and revisitable. Distinguish scanner
   failure from clean results; never suppress findings just to pass CI. Reuse

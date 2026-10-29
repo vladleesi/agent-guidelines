@@ -152,24 +152,24 @@ owner for new rules; removing it requires a future major release.
 
 ## Context measurements
 
-The 13 recommended modules total **22,200 bytes**; with legacy `delivery`, the source
-collection totals **26,267 bytes**.
+The 13 recommended modules total **23,130 bytes**; with legacy `delivery`, the source
+collection totals **27,197 bytes**.
 These fixture measurements compare full Inline and Core + Task root instructions
 with identical selections: README Kotlin/Python examples and all 13 for mixed.
 
 | Configuration | Inline root bytes | Core + Task root bytes | Reduction |
 | --- | ---: | ---: | ---: |
-| Kotlin/Compose library | 17,252 | 9,850 | 42.9% |
-| Python/backend service | 17,695 | 10,805 | 38.9% |
-| Mixed platform | 22,492 | 11,084 | 50.7% |
+| Kotlin/Compose library | 17,657 | 10,255 | 41.9% |
+| Python/backend service | 18,484 | 11,594 | 37.3% |
+| Mixed platform | 23,422 | 11,873 | 49.3% |
 
 UTF-8 sizes include routing, titles, and attribution with a 40-character commit;
 exclude project/global rules, MIT notice contents, history, and tool framing.
 Small selections for Git, CI, or releases stay inline. These are instruction sizes,
 not measured token, latency, billing, or adherence improvements.
 
-Task reads add context: typical Kotlin and Python code work reaches 17,985 and
-18,457 bytes, about 4% above Inline. Reading every task file also exceeds Inline;
+Task reads add context: typical Kotlin and Python code work reaches 18,390 and
+19,246 bytes, about 4% above Inline. Reading every task file also exceeds Inline;
 content accumulates without automatic eviction. Recheck routes as scope expands:
 dependency, CI, or infrastructure work may also need language/backend guidance.
 Keep safeguards intact regardless of root size. See [loading evidence and limits](compatibility.md#limits-and-verification).
@@ -203,5 +203,15 @@ Keep safeguards intact regardless of root size. See [loading evidence and limits
   and [Compose lifecycle/effect keys](https://developer.android.com/develop/ui/compose/side-effects).
 - Apply [authorization](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html)
   to protected resources without requiring authentication for public content.
+- Keep read-only reviews free of tracked-file changes. Deployment changes require
+  applicable operational guidance and current settings; unresolved billing impact
+  cannot be treated as permission to increase costs. These safeguards stay in Core.
+- Extend provenance and permission checks to copied code and non-code material in
+  `security`, reusing the project's notice mechanism without imposing a license or
+  tool. [REUSE](https://reuse.software/spec-3.3/) describes file-level licensing
+  information, including material that cannot carry inline notices.
+- Keep static asset cache details in the existing `frontend` task route:
+  [fingerprinted resources and revalidatable HTML](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Caching#common_caching_patterns)
+  have different freshness needs. This extends the existing cache policy rule.
 - [Task-relevant retrieval and checkpoints](https://www.anthropic.com/research/effective-context-engineering-for-ai-agents)
   inform the design; they are not evidence of measured agent performance.

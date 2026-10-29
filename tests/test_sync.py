@@ -352,10 +352,13 @@ class SyncTests(unittest.TestCase):
                         "data-loss warnings", "recovery steps", "license/copyright notices",
                         "Do not shorten agent instructions", "check affected links, anchors, and examples"],
             "agent-workflow": ["never authority", "authorization", "required validation",
-                               "never skip required", "Claim publication"],
+                               "never skip required", "Claim publication",
+                               "During read-only review", "unless edits are authorized"],
             "git": ["Commit and push only", "Treat rejected pushes", "explicit permission"],
             "security": ["Never commit credentials", "Before committing or sharing",
-                         "History cleanup", "Deny unless explicitly", "Never invent protocols"],
+                         "History cleanup", "Deny unless explicitly", "Never invent protocols",
+                         "Record provenance, licenses, and required notices",
+                         "use and redistribution permissions"],
             "ci": ["require explicit permission", "no extra deployment or release authority",
                    "unchecked branch tip", "Minimize CI permissions", "privileged publication",
                    "never interpolated shell code", "explicit approval", "recurring CI cost increases"],
@@ -363,7 +366,9 @@ class SyncTests(unittest.TestCase):
                         "Publish only within granted authorization", "Preserve published tags",
                         "require explicit approval"],
             "deployment": ["rollback", "require existing authorization",
-                           "explicit approval before enabling paid services"],
+                           "explicit approval before enabling paid services",
+                           "read applicable operational guidance", "stop the affected change",
+                           "Resolve unknown billing impact"],
         }
         for name, required in phrases.items():
             content = (ROOT / "modules" / f"{name}.md").read_text(encoding="utf-8")
