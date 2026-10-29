@@ -152,24 +152,24 @@ owner for new rules; removing it requires a future major release.
 
 ## Context measurements
 
-The 13 recommended modules total **20,927 bytes**; with legacy `delivery`, the source
-collection totals **24,994 bytes**. The placement change preserved rule wording.
+The 13 recommended modules total **22,200 bytes**; with legacy `delivery`, the source
+collection totals **26,267 bytes**.
 These fixture measurements compare full Inline and Core + Task root instructions
 with identical selections: README Kotlin/Python examples and all 13 for mixed.
 
 | Configuration | Inline root bytes | Core + Task root bytes | Reduction |
 | --- | ---: | ---: | ---: |
-| Kotlin/Compose library | 15,975 | 9,292 | 41.8% |
-| Python/backend service | 16,418 | 10,247 | 37.6% |
-| Mixed platform | 21,215 | 10,526 | 50.4% |
+| Kotlin/Compose library | 17,252 | 9,850 | 42.9% |
+| Python/backend service | 17,695 | 10,805 | 38.9% |
+| Mixed platform | 22,492 | 11,084 | 50.7% |
 
 UTF-8 sizes include routing, titles, and attribution with a 40-character commit;
 exclude project/global rules, MIT notice contents, history, and tool framing.
 Small selections for Git, CI, or releases stay inline. These are instruction sizes,
 not measured token, latency, billing, or adherence improvements.
 
-Task reads add context: typical Kotlin and Python code work reaches 16,712 and
-17,184 bytes, about 5% above Inline. Reading every task file also exceeds Inline;
+Task reads add context: typical Kotlin and Python code work reaches 17,985 and
+18,457 bytes, about 4% above Inline. Reading every task file also exceeds Inline;
 content accumulates without automatic eviction. Recheck routes as scope expands:
 dependency, CI, or infrastructure work may also need language/backend guidance.
 Keep safeguards intact regardless of root size. See [loading evidence and limits](compatibility.md#limits-and-verification).
@@ -180,6 +180,11 @@ Keep safeguards intact regardless of root size. See [loading evidence and limits
   avoid arbitrary limits, speculative abstractions, and mandated architectures.
   Repeat cleanup, cancellation, or
   validation mechanisms only where independent module use needs them.
+- Keep documentation guidance in `general`: reader needs and scoped replacement
+  of stale or repetitive content control growth without size quotas. Preservation
+  and required verification stay in Core; writing guidance uses the existing
+  documentation route. Routine user-documentation cleanup does not authorize
+  shortening agent instructions.
 - Match verification to risk and authorization; required project checks apply.
   No blanket build ban or test mandate for every docs edit. Push-only work stops
   after reporting; CI fixing includes authorized investigation and verification.

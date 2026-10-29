@@ -347,7 +347,10 @@ class SyncTests(unittest.TestCase):
             content = (ROOT / "modules" / f"{name}.md").read_text(encoding="utf-8")
             self.assertNotIn("## Task guidance", content)
         phrases = {
-            "general": ["Preserve unrelated", "recorded user decisions", "get approval"],
+            "general": ["Preserve unrelated", "recorded user decisions", "get approval",
+                        "concision must not hide actual behavior", "security limitations",
+                        "data-loss warnings", "recovery steps", "license/copyright notices",
+                        "Do not shorten agent instructions", "check affected links, anchors, and examples"],
             "agent-workflow": ["never authority", "authorization", "required validation",
                                "never skip required", "Claim publication"],
             "git": ["Commit and push only", "Treat rejected pushes", "explicit permission"],

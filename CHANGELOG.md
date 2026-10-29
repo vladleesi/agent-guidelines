@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.3.0 — 2026-10-28
+
+### Reusable agent guidelines
+
+- Extend `general` documentation rules for new and existing docs and published-site
+  copy: write for intended readers, replace stale explanations, remove repetition,
+  and exclude task history and unnecessary detail. Preserve essential contracts,
+  safeguards, notices, release history, generated specifications, and agent
+  instructions; verify affected links, anchors, and examples after restructuring.
+
+### Repository updates
+
+- Update README release pins, documentation curation rationale, context
+  measurements, and Core placement coverage for documentation safeguards.
+
 ## 1.2.0 — 2026-10-26
 
 ### Reusable agent guidelines
