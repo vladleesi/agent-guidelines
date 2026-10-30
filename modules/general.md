@@ -9,6 +9,15 @@
   get approval for project-wide convention changes. Revisit accepted or rejected
   decisions only on request or materially changed requirements. Consult project
   context before asking answered questions.
+- For optimization requests, work within the existing design and prefer the
+  smallest local diff. New architecture, configuration schemes, dependencies,
+  files, or changes to surrounding components require explicit approval; reuse
+  approval already given for that scope. If correctness requires broader changes,
+  explain the limitation and propose the smallest alternative before editing;
+  obtain approval for the expanded scope.
+- When asked to revert an optimization, restore the prior design and behavior,
+  remove additions introduced solely by that optimization, and validate the
+  restored state. Preserve unrelated changes.
 - Keep documentation accurate: concision must not hide actual behavior, weaken
   safeguards, or introduce unsupported claims. Preserve necessary API/protocol
   contracts, prerequisites, security limitations, data-loss warnings, and recovery

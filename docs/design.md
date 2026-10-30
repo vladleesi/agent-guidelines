@@ -152,24 +152,24 @@ owner for new rules; removing it requires a future major release.
 
 ## Context measurements
 
-The 13 recommended modules total **23,130 bytes**; with legacy `delivery`, the source
-collection totals **27,197 bytes**.
+The 13 recommended modules total **23,766 bytes**; with legacy `delivery`, the source
+collection totals **27,833 bytes**.
 These fixture measurements compare full Inline and Core + Task root instructions
 with identical selections: README Kotlin/Python examples and all 13 for mixed.
 
 | Configuration | Inline root bytes | Core + Task root bytes | Reduction |
 | --- | ---: | ---: | ---: |
-| Kotlin/Compose library | 17,657 | 10,255 | 41.9% |
-| Python/backend service | 18,484 | 11,594 | 37.3% |
-| Mixed platform | 23,422 | 11,873 | 49.3% |
+| Kotlin/Compose library | 18,293 | 10,891 | 40.5% |
+| Python/backend service | 19,120 | 12,230 | 36.0% |
+| Mixed platform | 24,058 | 12,509 | 48.0% |
 
 UTF-8 sizes include routing, titles, and attribution with a 40-character commit;
 exclude project/global rules, MIT notice contents, history, and tool framing.
 Small selections for Git, CI, or releases stay inline. These are instruction sizes,
 not measured token, latency, billing, or adherence improvements.
 
-Task reads add context: typical Kotlin and Python code work reaches 18,390 and
-19,246 bytes, about 4% above Inline. Reading every task file also exceeds Inline;
+Task reads add context: typical Kotlin and Python code work reaches 19,026 and
+19,882 bytes, about 4% above Inline. Reading every task file also exceeds Inline;
 content accumulates without automatic eviction. Recheck routes as scope expands:
 dependency, CI, or infrastructure work may also need language/backend guidance.
 Keep safeguards intact regardless of root size. See [loading evidence and limits](compatibility.md#limits-and-verification).
@@ -185,6 +185,13 @@ Keep safeguards intact regardless of root size. See [loading evidence and limits
   and required verification stay in Core; writing guidance uses the existing
   documentation route. Routine user-documentation cleanup does not authorize
   shortening agent instructions.
+- Keep optimization scope and reversion safeguards in `general` Core. An
+  optimization request does not authorize a redesign, new files or dependencies,
+  or surrounding component changes; existing explicit approval still applies.
+  Explain correctness limitations and propose the smallest alternative before
+  expanding scope. Reverting restores and validates the prior design and behavior,
+  including removal of additions used only by the optimization. Measurement and
+  cache guidance stays in Task guidance under the existing general route.
 - Match verification to risk and authorization; required project checks apply.
   No blanket build ban or test mandate for every docs edit. Push-only work stops
   after reporting; CI fixing includes authorized investigation and verification.

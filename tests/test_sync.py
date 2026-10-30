@@ -348,6 +348,15 @@ class SyncTests(unittest.TestCase):
             self.assertNotIn("## Task guidance", content)
         phrases = {
             "general": ["Preserve unrelated", "recorded user decisions", "get approval",
+                        "For optimization requests", "smallest local diff",
+                        "New architecture, configuration schemes, dependencies, files, "
+                        "or changes to surrounding components require explicit approval",
+                        "reuse approval already given for that scope",
+                        "propose the smallest alternative before editing",
+                        "obtain approval for the expanded scope",
+                        "When asked to revert an optimization", "restore the prior design and behavior",
+                        "remove additions introduced solely by that optimization",
+                        "validate the restored state", "Preserve unrelated changes",
                         "concision must not hide actual behavior", "security limitations",
                         "data-loss warnings", "recovery steps", "license/copyright notices",
                         "Do not shorten agent instructions", "check affected links, anchors, and examples"],

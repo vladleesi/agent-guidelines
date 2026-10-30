@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.5.0 — 2026-10-30
+
+### Reusable agent guidelines
+
+- Add optimization safeguards to `general` Core: preserve the existing design,
+  prefer the smallest local diff, and require explicit approval for new
+  architecture, configuration schemes, dependencies, files, or surrounding
+  component changes. Reuse existing approval; explain correctness limitations
+  and propose the smallest alternative before editing beyond the original scope.
+- When reverting an optimization, restore and validate the prior design and
+  behavior, remove additions used only by that optimization, and preserve
+  unrelated changes.
+
+### Repository updates
+
+- Update README release pins, optimization rationale, context measurements, and
+  Core placement coverage for the new safeguards.
+
 ## 1.4.0 — 2026-10-29
 
 ### Reusable agent guidelines
