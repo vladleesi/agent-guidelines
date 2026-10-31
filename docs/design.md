@@ -152,24 +152,24 @@ owner for new rules; removing it requires a future major release.
 
 ## Context measurements
 
-The 13 recommended modules total **23,766 bytes**; with legacy `delivery`, the source
-collection totals **27,833 bytes**.
+The 13 recommended modules total **24,243 bytes**; with legacy `delivery`, the source
+collection totals **28,310 bytes**.
 These fixture measurements compare full Inline and Core + Task root instructions
 with identical selections: README Kotlin/Python examples and all 13 for mixed.
 
 | Configuration | Inline root bytes | Core + Task root bytes | Reduction |
 | --- | ---: | ---: | ---: |
-| Kotlin/Compose library | 18,293 | 10,891 | 40.5% |
-| Python/backend service | 19,120 | 12,230 | 36.0% |
-| Mixed platform | 24,058 | 12,509 | 48.0% |
+| Kotlin/Compose library | 18,770 | 10,891 | 42.0% |
+| Python/backend service | 19,325 | 12,230 | 36.7% |
+| Mixed platform | 24,535 | 12,509 | 49.0% |
 
 UTF-8 sizes include routing, titles, and attribution with a 40-character commit;
 exclude project/global rules, MIT notice contents, history, and tool framing.
 Small selections for Git, CI, or releases stay inline. These are instruction sizes,
 not measured token, latency, billing, or adherence improvements.
 
-Task reads add context: typical Kotlin and Python code work reaches 19,026 and
-19,882 bytes, about 4% above Inline. Reading every task file also exceeds Inline;
+Task reads add context: typical Kotlin and Python code work reaches 19,503 and
+20,087 bytes, about 4% above Inline. Reading every task file also exceeds Inline;
 content accumulates without automatic eviction. Recheck routes as scope expands:
 dependency, CI, or infrastructure work may also need language/backend guidance.
 Keep safeguards intact regardless of root size. See [loading evidence and limits](compatibility.md#limits-and-verification).
@@ -180,6 +180,14 @@ Keep safeguards intact regardless of root size. See [loading evidence and limits
   avoid arbitrary limits, speculative abstractions, and mandated architectures.
   Repeat cleanup, cancellation, or
   validation mechanisms only where independent module use needs them.
+- Keep content-based parameter/property naming and source/format documentation in
+  `general`; its existing code route covers all languages. Keep `runCatching`
+  selection in `kotlin` under its existing task route. This is a readability
+  preference for suitable fallbacks, not a blanket replacement for `try`/`catch`.
+  [`runCatching`](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/run-catching.html)
+  catches any `Throwable`; preserve cancellation with either form and retain
+  [`try`/`catch` and `finally`](https://kotlinlang.org/docs/exceptions.html#handle-exceptions-using-try-catch-blocks)
+  for specific exception handling, cleanup, or rethrowing.
 - Keep documentation guidance in `general`: reader needs and scoped replacement
   of stale or repetitive content control growth without size quotas. Preservation
   and required verification stay in Core; writing guidance uses the existing

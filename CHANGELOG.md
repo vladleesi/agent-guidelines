@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.6.0 — 2026-10-31
+
+### Reusable agent guidelines
+
+- Specify content-based parameter and property names in `general`; document
+  parameters when their source or format is not clear from their names.
+- Add a readability-based `runCatching` preference in `kotlin` for suitable
+  non-suspending fallbacks. Retain `try`/`catch` for specific exceptions, cleanup,
+  and rethrowing, with cancellation propagation preserved in either form.
+
+### Repository updates
+
+- Update README release pins, naming and exception-handling rationale, and
+  context measurements. Existing general and Kotlin task routes cover the rules.
+
 ## 1.5.0 — 2026-10-30
 
 ### Reusable agent guidelines
