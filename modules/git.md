@@ -7,6 +7,9 @@
   environment and inspect the working tree, full intended diff, and all staged
   content. Exclude accidental or unrelated edits and unintended generated output.
   Keep commits coherent and follow project commit conventions.
+- Use the current Git author settings. Never override author identity or add
+  co-author trailers, AI/tool attribution, or other optional commit metadata
+  without explicit user approval.
 - After a successful authorized push, report the locally known commit hash and
   push result. Stop push-only tasks: fetch remote refs or monitor CI, deployments,
   releases, or promotions only on request or as required by an agreed workflow.

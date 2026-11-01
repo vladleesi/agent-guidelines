@@ -152,24 +152,24 @@ owner for new rules; removing it requires a future major release.
 
 ## Context measurements
 
-The 13 recommended modules total **24,243 bytes**; with legacy `delivery`, the source
-collection totals **28,310 bytes**.
+The 13 recommended modules total **24,431 bytes**; with legacy `delivery`, the source
+collection totals **28,498 bytes**.
 These fixture measurements compare full Inline and Core + Task root instructions
 with identical selections: README Kotlin/Python examples and all 13 for mixed.
 
 | Configuration | Inline root bytes | Core + Task root bytes | Reduction |
 | --- | ---: | ---: | ---: |
-| Kotlin/Compose library | 18,770 | 10,891 | 42.0% |
-| Python/backend service | 19,325 | 12,230 | 36.7% |
-| Mixed platform | 24,535 | 12,509 | 49.0% |
+| Kotlin/Compose library | 18,958 | 11,079 | 41.6% |
+| Python/backend service | 19,513 | 12,418 | 36.4% |
+| Mixed platform | 24,723 | 12,697 | 48.6% |
 
 UTF-8 sizes include routing, titles, and attribution with a 40-character commit;
 exclude project/global rules, MIT notice contents, history, and tool framing.
 Small selections for Git, CI, or releases stay inline. These are instruction sizes,
 not measured token, latency, billing, or adherence improvements.
 
-Task reads add context: typical Kotlin and Python code work reaches 19,503 and
-20,087 bytes, about 4% above Inline. Reading every task file also exceeds Inline;
+Task reads add context: typical Kotlin and Python code work reaches 19,691 and
+20,275 bytes, about 4% above Inline. Reading every task file also exceeds Inline;
 content accumulates without automatic eviction. Recheck routes as scope expands:
 dependency, CI, or infrastructure work may also need language/backend guidance.
 Keep safeguards intact regardless of root size. See [loading evidence and limits](compatibility.md#limits-and-verification).

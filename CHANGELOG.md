@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.7.0 — 2026-10-31
+
+### Reusable agent guidelines
+
+- Require current Git author settings in `git` Core. Overriding author identity
+  or adding co-author trailers, AI/tool attribution, or other optional commit
+  metadata requires explicit user approval.
+
+### Repository updates
+
+- Update README release pins, context measurements, and Core placement coverage
+  for the commit attribution safeguard.
+
 ## 1.6.0 — 2026-10-31
 
 ### Reusable agent guidelines
