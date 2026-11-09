@@ -15,6 +15,10 @@
   approval already given for that scope. If correctness requires broader changes,
   explain the limitation and propose the smallest alternative before editing;
   obtain approval for the expanded scope.
+- Suggest rewrites, cleanups, or performance investigations such as profiling,
+  tracing, or benchmarks beyond the requested change when evidence shows a
+  need; explain the reason and expected scope, and start them only with
+  explicit approval.
 - When asked to revert an optimization, restore the prior design and behavior,
   remove additions introduced solely by that optimization, and validate the
   restored state. Preserve unrelated changes.

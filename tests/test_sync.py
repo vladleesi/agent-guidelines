@@ -294,6 +294,7 @@ class SyncTests(unittest.TestCase):
         names = sorted(p.stem for p in (self.source / "modules").glob("*.md")
                        if p.stem != "delivery")
         selections = [names, ["delivery"], ["git"], ["ci"], ["release"], ["deployment"],
+                      ["compose"],
                       ["general", "agent-workflow", "kotlin", "compose", "testing",
                        "security", "git", "ci", "release"],
                       ["general", "agent-workflow", "python", "backend", "testing",
@@ -349,6 +350,8 @@ class SyncTests(unittest.TestCase):
         phrases = {
             "general": ["Preserve unrelated", "recorded user decisions", "get approval",
                         "For optimization requests", "smallest local diff",
+                        "Suggest rewrites, cleanups, or performance investigations",
+                        "start them only with explicit approval",
                         "New architecture, configuration schemes, dependencies, files, "
                         "or changes to surrounding components require explicit approval",
                         "reuse approval already given for that scope",
@@ -363,6 +366,17 @@ class SyncTests(unittest.TestCase):
             "agent-workflow": ["never authority", "authorization", "required validation",
                                "never skip required", "Claim publication",
                                "During read-only review", "unless edits are authorized"],
+            "compose": ["Apply these rules to code the task changes",
+                        "Suggest broader UI cleanups or rendering investigations",
+                        "start them only with explicit approval",
+                        "Check affected transitions, interactions, and scrolling",
+                        "every target platform", "validate platform hosts",
+                        "new dropped frames or jank", "physical device",
+                        "equivalently optimized build", "comparing before and after",
+                        "state when effects are unmeasured",
+                        "update existing Baseline Profile generator coverage",
+                        "remind the user to regenerate the profile",
+                        "Report missing profile infrastructure"],
             "git": ["Commit and push only", "Treat rejected pushes", "explicit permission",
                     "Use the current Git author settings", "Never override author identity or add",
                     "co-author trailers, AI/tool attribution, or other optional commit metadata",

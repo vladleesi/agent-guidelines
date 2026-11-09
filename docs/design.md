@@ -71,7 +71,7 @@ before acting; reading a guide grants no additional authorization.
 | Investigation, planning, or tool use | `docs/agent-guidance/agent-workflow.md` |
 | Changes needing validation, test work, CI fixes, or release preparation | `docs/agent-guidance/testing.md` |
 | Kotlin, Gradle, Android, or Multiplatform | `docs/agent-guidance/kotlin.md` |
-| Compose UI or its platform integration | `docs/agent-guidance/compose.md` |
+| Compose UI, scrolling/rendering performance, Baseline Profiles, or platform integration | `docs/agent-guidance/compose.md` |
 | Python code, packaging, or interpreter/dependency changes | `docs/agent-guidance/python.md` |
 | Services, APIs, persistence, or backend concurrency | `docs/agent-guidance/backend.md` |
 | Browser UI, navigation, assets, or public web content | `docs/agent-guidance/frontend.md` |
@@ -152,24 +152,26 @@ owner for new rules; removing it requires a future major release.
 
 ## Context measurements
 
-The 13 recommended modules total **24,431 bytes**; with legacy `delivery`, the source
-collection totals **28,498 bytes**.
+The 13 recommended modules total **27,868 bytes**; with legacy `delivery`, the source
+collection totals **31,935 bytes**.
 These fixture measurements compare full Inline and Core + Task root instructions
 with identical selections: README Kotlin/Python examples and all 13 for mixed.
+Core + Task uses `one_time_files` in `tests/test_sync.py`; Inline uses the same
+attribution header followed by the full selected module texts.
 
 | Configuration | Inline root bytes | Core + Task root bytes | Reduction |
 | --- | ---: | ---: | ---: |
-| Kotlin/Compose library | 18,958 | 11,079 | 41.6% |
-| Python/backend service | 19,513 | 12,418 | 36.4% |
-| Mixed platform | 24,723 | 12,697 | 48.6% |
+| Kotlin/Compose library | 22,119 | 12,459 | 43.7% |
+| Python/backend service | 19,481 | 12,665 | 35.0% |
+| Mixed platform | 27,908 | 14,077 | 49.6% |
 
 UTF-8 sizes include routing, titles, and attribution with a 40-character commit;
 exclude project/global rules, MIT notice contents, history, and tool framing.
 Small selections for Git, CI, or releases stay inline. These are instruction sizes,
 not measured token, latency, billing, or adherence improvements.
 
-Task reads add context: typical Kotlin and Python code work reaches 19,691 and
-20,275 bytes, about 4% above Inline. Reading every task file also exceeds Inline;
+Task reads add context: typical Kotlin and Python code work reaches 23,182 and
+20,522 bytes, about 5% above Inline. Reading every task file also exceeds Inline;
 content accumulates without automatic eviction. Recheck routes as scope expands:
 dependency, CI, or infrastructure work may also need language/backend guidance.
 Keep safeguards intact regardless of root size. See [loading evidence and limits](compatibility.md#limits-and-verification).
@@ -198,8 +200,11 @@ Keep safeguards intact regardless of root size. See [loading evidence and limits
   or surrounding component changes; existing explicit approval still applies.
   Explain correctness limitations and propose the smallest alternative before
   expanding scope. Reverting restores and validates the prior design and behavior,
-  including removal of additions used only by the optimization. Measurement and
-  cache guidance stays in Task guidance under the existing general route.
+  including removal of additions used only by the optimization. Agents suggest
+  rewrites, cleanups, and profiling, tracing, or benchmark investigations beyond
+  the request with reasons and scope, then start them only on explicit approval;
+  a request for that investigation is approval. Measurement and cache guidance
+  stays in Task guidance under the existing general route.
 - Match verification to risk and authorization; required project checks apply.
   No blanket build ban or test mandate for every docs edit. Push-only work stops
   after reporting; CI fixing includes authorized investigation and verification.
@@ -216,6 +221,30 @@ Keep safeguards intact regardless of root size. See [loading evidence and limits
 - Preserve [Kotlin](https://kotlinlang.org/docs/coroutines-cancellation.html) and
   [Python](https://docs.python.org/3/library/asyncio-exceptions.html) cancellation,
   and [Compose lifecycle/effect keys](https://developer.android.com/develop/ui/compose/side-effects).
+- Keep Compose rendering and scrolling rules in `compose`; its existing task
+  route also covers performance work and Baseline Profiles. Core keeps only
+  scope and verification: rules apply to changed code, broader cleanups and
+  rendering investigations need explicit approval (repeated from `general` so
+  `compose` works alone), and performance claims need optimized physical-device
+  comparisons. [Physical-device benchmarks](https://developer.android.com/topic/performance/benchmarking/macrobenchmark-overview)
+  represent production rendering; emulator timings do not. Rules name no project
+  helpers, paths, or new dependencies.
+- Task rules follow primary guidance: [lazy keys and content types](https://developer.android.com/develop/ui/compose/lists),
+  [deferred reads and cached calculations](https://developer.android.com/develop/ui/compose/performance/bestpractices),
+  [strong skipping](https://developer.android.com/develop/ui/compose/performance/stability/strongskipping)
+  lambda memoization, [image sizing](https://developer.android.com/develop/ui/compose/graphics/images/optimization),
+  [modifier nodes](https://developer.android.com/develop/ui/compose/custom-modifiers),
+  and [compositing](https://developer.android.com/develop/ui/compose/graphics/draw/modifiers).
+  A viewport-sized [cache window](https://developer.android.com/reference/kotlin/androidx/compose/foundation/lazy/layout/package-summary)
+  is a tuning start, not a reason to upgrade dependencies. [Remove redundant fills](https://developer.android.com/topic/performance/rendering/overdraw)
+  rather than requiring single painting; clearing the [window background](https://developer.android.com/reference/android/view/Window#setBackgroundDrawable(android.graphics.drawable.Drawable))
+  requires opaque replacement coverage. The [overdraw overlay](https://developer.android.com/topic/performance/rendering/inspect-gpu-rendering)
+  counts extra draws, while the rule counts total draws. [Frame statistics](https://developer.android.com/tools/dumpsys#gfxinfo)
+  and [HWUI frame data](https://android.googlesource.com/platform/frameworks/base/+/refs/heads/main/libs/hwui/FrameInfo.h)
+  separate UI-thread work from queue delay but do not measure GPU execution; use
+  traces for compositor waits. Libraries and non-Android targets need no
+  [Baseline Profile](https://developer.android.com/topic/performance/baselineprofiles/create-baselineprofile)
+  infrastructure.
 - Apply [authorization](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html)
   to protected resources without requiring authentication for public content.
 - Keep read-only reviews free of tracked-file changes. Deployment changes require

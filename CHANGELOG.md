@@ -1,5 +1,27 @@
 # Changelog
 
+## 1.8.0 — 2026-11-09
+
+### Reusable agent guidelines
+
+- Add Compose rendering and scrolling guidance: single background ownership,
+  lazy keys, content types, and cache windows, composition work, deferred state
+  reads, image sizing, modifier nodes, offscreen effects, and overdraw/frame
+  investigation. Rules use each project's existing tokens, helpers, and loaders.
+- Require explicit approval before rewrites, cleanups, or performance
+  investigations such as profiling, tracing, or benchmarks beyond the requested
+  change; agents suggest them with reasons and scope when evidence shows a need.
+- Scope Compose rules to changed code and move platform checks to Core. Base
+  Android rendering-performance claims on optimized physical-device before/after
+  comparisons, state unmeasured effects, and remind users about Baseline Profile
+  coverage.
+
+### Repository updates
+
+- Extend the Compose task route to performance work and Baseline Profiles; add
+  Compose Core placement tests, source rationale, recomputed context
+  measurements, and README release pins.
+
 ## 1.7.0 — 2026-10-31
 
 ### Reusable agent guidelines
