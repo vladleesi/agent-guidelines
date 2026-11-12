@@ -57,13 +57,11 @@ rule scope. Only selected modules apply; Core is not a separate required module.
 ## Local task guidance
 
 Before relevant analysis, edits, or commands, read all matching files below.
-Paths are relative to this AGENTS.md, not the shell's working directory.
-Recheck routes when the task expands, crosses scopes, or context is compacted;
-read guidance again if it is no longer in context. If required guidance is missing
-or unreadable, report it and stop the affected work. These files supplement the
-core rules; project-specific instructions and recorded decisions take precedence.
-Consider indirect effects of commands, including CI, publication, and deployment,
-before acting; reading a guide grants no additional authorization.
+Paths are relative to this AGENTS.md. Recheck routes as scope changes or context
+is compacted; reread guidance no longer in context. If required files are missing
+or unreadable, report and stop affected work. These supplement Core; project-specific
+instructions and recorded decisions take precedence. Consider indirect CI,
+publication, and deployment effects before acting; reading grants no authorization.
 
 | Work | Read first |
 | --- | --- |
@@ -84,10 +82,11 @@ file, and representative tasks read guidance from both root and nested working
 directories. Apply the one-time import checks above; staging `--check` cannot verify
 routing or the final import. Do not use eager `@` imports for task files.
 
-Git, security, and deployment currently contain only Core rules. Keep CI/release
-bullets intact even when they mix details with approval gates; do not shorten or
-split them for a size target. Core retains required verification and security,
-Git, CI, release, deployment, and cost safeguards for the selected modules.
+Git, security, and deployment contain only Core rules. Core retains security,
+authorization, cost, and required-verification safeguards for each selected module,
+including when used alone. CI tuning and SemVer mechanics use existing task routes.
+Keep imported bullets intact even when they mix details with safeguards; collection
+maintainers may revise them, but consumers must preserve pinned wording.
 
 Use nested `AGENTS.md` instead of a task-file copy only where all supported workflows
 discover the directory scope; retain root routes for agents started elsewhere.
@@ -95,6 +94,10 @@ Root path headings alone do not control discovery, and directory scope alone can
 route operation-based tasks. Existing layouts change only on authorized updates;
 conversion from maintained sync to a one-time import requires an explicit request.
 Placement changes alone require no wording migration.
+
+v1.9 keeps module names and task routes compatible. When updating a one-time
+import, reconcile full selected modules so relocated Core rules do not remain
+deferred. Existing pinned copies remain valid; maintained sync needs no migration.
 
 ### Maintained synchronization
 
@@ -152,27 +155,40 @@ owner for new rules; removing it requires a future major release.
 
 ## Context measurements
 
-The 13 recommended modules total **27,868 bytes**; with legacy `delivery`, the source
-collection totals **31,935 bytes**.
+Source instruction sizes, including module titles and placement headings:
+
+| Selection | v1.8.0 characters | v1.9.0 characters | Approx. tokens before → after | Reduction |
+| --- | ---: | ---: | ---: | ---: |
+| 13 recommended modules | 27,868 | 25,166 | 6,967 → 6,292 | 9.7% |
+| Including frozen `delivery` | 31,935 | 29,233 | 7,984 → 7,308 | 8.5% |
+
+Module text is ASCII, so character and UTF-8 byte counts match. Token estimates
+use characters / 4, rounded; actual tokenization varies by model. This is a size
+comparison, not measured latency, billing, or adherence improvement.
+
 These fixture measurements compare full Inline and Core + Task root instructions
 with identical selections: README Kotlin/Python examples and all 13 for mixed.
 Core + Task uses `one_time_files` in `tests/test_sync.py`; Inline uses the same
-attribution header followed by the full selected module texts.
+complete attribution header followed by full module texts, separated by blank
+lines and ending with a newline.
 
 | Configuration | Inline root bytes | Core + Task root bytes | Reduction |
 | --- | ---: | ---: | ---: |
-| Kotlin/Compose library | 22,119 | 12,459 | 43.7% |
-| Python/backend service | 19,481 | 12,665 | 35.0% |
-| Mixed platform | 27,908 | 14,077 | 49.6% |
+| Kotlin/Compose library | 20,313 | 11,447 | 43.6% |
+| Python/backend service | 18,286 | 12,145 | 33.6% |
+| Mixed platform | 25,701 | 13,786 | 46.4% |
 
 UTF-8 sizes include routing, titles, and attribution with a 40-character commit;
 exclude project/global rules, MIT notice contents, history, and tool framing.
-Small selections for Git, CI, or releases stay inline. These are instruction sizes,
-not measured token, latency, billing, or adherence improvements.
+Small selections for Git, CI, or releases stay inline. Compared with the v1.8.0
+fixtures, Core + Task roots shrink from 12,459, 12,665, and 14,077 bytes respectively,
+while retaining relocated safeguards.
 
-Task reads add context: typical Kotlin and Python code work reaches 23,182 and
-20,522 bytes, about 5% above Inline. Reading every task file also exceeds Inline;
-content accumulates without automatic eviction. Recheck routes as scope expands:
+Task reads add context: root plus general, workflow, testing, and the relevant
+language/UI or language/backend guides reaches 20,345 bytes for Kotlin and 18,267
+for Python, approximately Inline size. Reading every mixed-platform task file
+reaches 27,144 bytes and exceeds Inline; context accumulates without automatic
+eviction. Recheck routes as scope expands:
 dependency, CI, or infrastructure work may also need language/backend guidance.
 Keep safeguards intact regardless of root size. See [loading evidence and limits](compatibility.md#limits-and-verification).
 
@@ -180,8 +196,12 @@ Keep safeguards intact regardless of root size. See [loading evidence and limits
 
 - Keep rules addressing concrete failures or recurring engineering decisions;
   avoid arbitrary limits, speculative abstractions, and mandated architectures.
-  Repeat cleanup, cancellation, or
-  validation mechanisms only where independent module use needs them.
+  Repeat cleanup, cancellation, or validation only for independent module use.
+  In v1.9, merge related workflow, documentation, and Kotlin exception rules;
+  remove duplicate wording, not unique constraints. Keep token-efficiency practices
+  in `agent-workflow`, including targeted retrieval, bounded output, reuse, batching,
+  concise communication, and stopping once evidence suffices. Required checks and
+  scope/approval gates override efficiency shortcuts.
 - Keep content-based parameter/property naming and source/format documentation in
   `general`; its existing code route covers all languages. Keep `runCatching`
   selection in `kotlin` under its existing task route. This is a readability
@@ -245,6 +265,11 @@ Keep safeguards intact regardless of root size. See [loading evidence and limits
   traces for compositor waits. Libraries and non-Android targets need no
   [Baseline Profile](https://developer.android.com/topic/performance/baselineprofiles/create-baselineprofile)
   infrastructure.
+- Rechecked affected technical claims against these primary sources on 2026-11-12.
+  Current [Compose guidance](https://developer.android.com/develop/ui/compose/performance/bestpractices)
+  distinguishes `computedStateOf` for cheap derivations on Runtime 1.13+ from
+  `derivedStateOf` for older versions or expensive repeated calculations. Keep the
+  module version-aware without requiring an upgrade or adding dependencies.
 - Apply [authorization](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html)
   to protected resources without requiring authentication for public content.
 - Keep read-only reviews free of tracked-file changes. Deployment changes require

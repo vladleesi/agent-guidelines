@@ -1,5 +1,27 @@
 # Changelog
 
+## 1.9.0 — 2026-11-12
+
+### Reusable agent guidelines
+
+- Condense all recommended modules, merging related workflow, documentation,
+  and exception-handling rules while preserving scope, approval gates, security,
+  and validation requirements. Keep the legacy `delivery` snapshot unchanged.
+- Extend `agent-workflow` with targeted reads/searches, bounded output, reuse of
+  findings, batched independent operations, concise communication, and stopping
+  criteria scaled to task complexity and risk.
+- Keep backend/Python security and language, packaging, distributable, migration,
+  and public-page verification safeguards in Core. Defer CI tuning and SemVer
+  mechanics through existing task routes; preserve independent module use.
+- Make Compose derived-state guidance account for supported versions, including
+  `computedStateOf` for inexpensive derivations.
+
+### Repository updates
+
+- Update Core placement and standalone routing coverage, context measurements,
+  source rationale, and README pins. Module names, selections, CLI options,
+  manifest fields, markers, and synchronization behavior remain compatible.
+
 ## 1.8.0 — 2026-11-09
 
 ### Reusable agent guidelines
