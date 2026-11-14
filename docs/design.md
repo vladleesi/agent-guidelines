@@ -66,7 +66,7 @@ publication, and deployment effects before acting; reading grants no authorizati
 | Work | Read first |
 | --- | --- |
 | Code, configuration, dependency, or documentation changes/review | `docs/agent-guidance/general.md` |
-| Investigation, planning, or tool use | `docs/agent-guidance/agent-workflow.md` |
+| Investigation, planning, change reviews, or tool use | `docs/agent-guidance/agent-workflow.md` |
 | Changes needing validation, test work, CI fixes, or release preparation | `docs/agent-guidance/testing.md` |
 | Kotlin, Gradle, Android, or Multiplatform | `docs/agent-guidance/kotlin.md` |
 | Compose UI, scrolling/rendering performance, Baseline Profiles, or platform integration | `docs/agent-guidance/compose.md` |
@@ -157,43 +157,66 @@ owner for new rules; removing it requires a future major release.
 
 Source instruction sizes, including module titles and placement headings:
 
-| Selection | v1.8.0 characters | v1.9.0 characters | Approx. tokens before → after | Reduction |
+| Selection | v1.9.0 characters | v1.10.0 characters | Approx. tokens before → after | Increase |
 | --- | ---: | ---: | ---: | ---: |
-| 13 recommended modules | 27,868 | 25,166 | 6,967 → 6,292 | 9.7% |
-| Including frozen `delivery` | 31,935 | 29,233 | 7,984 → 7,308 | 8.5% |
+| 13 recommended modules | 25,166 | 25,926 | 6,292 → 6,482 | 3.0% |
+| Including frozen `delivery` | 29,233 | 29,993 | 7,308 → 7,498 | 2.6% |
 
 Module text is ASCII, so character and UTF-8 byte counts match. Token estimates
 use characters / 4, rounded; actual tokenization varies by model. This is a size
 comparison, not measured latency, billing, or adherence improvement.
 
 These fixture measurements compare full Inline and Core + Task root instructions
-with identical selections: README Kotlin/Python examples and all 13 for mixed.
+at v1.10.0 with identical selections: README Kotlin/Python examples and all 13 for mixed.
 Core + Task uses `one_time_files` in `tests/test_sync.py`; Inline uses the same
 complete attribution header followed by full module texts, separated by blank
 lines and ending with a newline.
 
 | Configuration | Inline root bytes | Core + Task root bytes | Reduction |
 | --- | ---: | ---: | ---: |
-| Kotlin/Compose library | 20,313 | 11,447 | 43.6% |
-| Python/backend service | 18,286 | 12,145 | 33.6% |
-| Mixed platform | 25,701 | 13,786 | 46.4% |
+| Kotlin/Compose library | 21,074 | 12,143 | 42.4% |
+| Python/backend service | 19,047 | 12,841 | 32.6% |
+| Mixed platform | 26,462 | 14,482 | 45.3% |
 
 UTF-8 sizes include routing, titles, and attribution with a 40-character commit;
 exclude project/global rules, MIT notice contents, history, and tool framing.
 Small selections for Git, CI, or releases stay inline. Compared with the v1.8.0
-fixtures, Core + Task roots shrink from 12,459, 12,665, and 14,077 bytes respectively,
-while retaining relocated safeguards.
+fixtures, Core + Task roots change from 12,459, 12,665, and 14,077 bytes respectively,
+while retaining relocated safeguards and adding runtime verification.
 
 Task reads add context: root plus general, workflow, testing, and the relevant
-language/UI or language/backend guides reaches 20,345 bytes for Kotlin and 18,267
+language/UI or language/backend guides reaches 21,122 bytes for Kotlin and 19,044
 for Python, approximately Inline size. Reading every mixed-platform task file
-reaches 27,144 bytes and exceeds Inline; context accumulates without automatic
+reaches 27,921 bytes and exceeds Inline; context accumulates without automatic
 eviction. Recheck routes as scope expands:
 dependency, CI, or infrastructure work may also need language/backend guidance.
 Keep safeguards intact regardless of root size. See [loading evidence and limits](compatibility.md#limits-and-verification).
 
 ## Curation decisions
 
+- Keep interactive-feature runtime verification in `testing` Core so it applies
+  before task guidance is loaded, including when testing is selected alone.
+  Run the changed workflow in an appropriate browser, emulator, simulator, or
+  physical device; report unavailable checks and their remaining gaps. This is a
+  collection completion policy, informed by
+  [user-visible browser testing](https://playwright.dev/docs/best-practices#test-user-visible-behavior)
+  and [testing scope and runtime fidelity](https://developer.android.com/training/testing/fundamentals/strategies).
+  Compilation and unit tests cannot establish all interactive behavior; physical
+  devices are needed where simulated capabilities or performance are inadequate.
+  Reuse the existing testing route; remove the superseded optional UI-check rule.
+- Prefer concise decision rules over repeated instructions. Workflow guidance
+  separates bounded retrieval, reuse, and checkpoints; project policy can require
+  repeated checks. Read-only review protects new files as well as tracked content,
+  with ordinary check artifacts allowed. Testing Core requires project checks even
+  when selected alone; task guidance focuses additional checks. Keep specialized
+  rules and limited safeguard overlap needed for independent module use.
+- Keep change reviews focused on actionable issues caused by the diff, including
+  indirect breakage. Evidence, deduplication, and a no-findings outcome reduce
+  review noise. Long-task checkpoints retain objectives, constraints, failed
+  approaches, and evidence locations to avoid repeated investigation; reuse
+  existing task state. Both belong in `agent-workflow` Task guidance, whose route
+  explicitly includes change reviews. Authorization and required checks stay in
+  Core. Actual token savings and adherence across agents remain unmeasured.
 - Keep rules addressing concrete failures or recurring engineering decisions;
   avoid arbitrary limits, speculative abstractions, and mandated architectures.
   Repeat cleanup, cancellation, or validation only for independent module use.

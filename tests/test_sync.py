@@ -309,6 +309,14 @@ class SyncTests(unittest.TestCase):
                             for name in selection}
                 files = one_time_files(contents, commit, ref="v1.0.0")
                 root = files["AGENTS.md"].decode()
+                if "agent-workflow" in selection:
+                    route = next(line for line in root.splitlines()
+                                 if "`docs/agent-guidance/agent-workflow.md`" in line)
+                    self.assertIn("change reviews", route)
+                    workflow = files["docs/agent-guidance/agent-workflow.md"].decode()
+                    for phrase in ("For change reviews", "failed approaches"):
+                        self.assertIn(phrase, workflow)
+                        self.assertNotIn(phrase, root)
                 imported = "\n".join(value.decode() for path, value in files.items()
                                      if path.endswith(".md"))
                 def bullets(text):
@@ -362,7 +370,8 @@ class SyncTests(unittest.TestCase):
                         "Do not shorten agent instructions", "check affected links, anchors, and examples"],
             "agent-workflow": ["never authority", "authorization", "required validation",
                                "never skip required", "Claim publication",
-                               "During read-only review", "unless edits are authorized"],
+                               "During read-only review", "do not create, modify, or delete project files",
+                               "unless edits are authorized", "ordinary temporary/build artifacts"],
             "compose": ["Apply these rules to changed code",
                         "Suggest needed broader UI cleanups or rendering investigations",
                         "start only with explicit approval",
@@ -403,9 +412,14 @@ class SyncTests(unittest.TestCase):
                        "subprocesses with argument lists", "handle expected exit codes explicitly",
                        "Never build shell commands from untrusted input",
                        "Test real imports and entry points for packaging or startup changes"],
-            "testing": ["isolated from live services/user data", "test credentials",
+            "testing": ["Run project-required checks", "isolated from live services/user data", "test credentials",
                         "temporary resources", "synchronize concurrency tests",
                         "authorization-failure", "data-loss paths", "verify migrations",
+                        "After implementing or changing an interactive feature",
+                        "browser, emulator, simulator, or physical device",
+                        "cover affected states and platforms", "inspect runtime errors",
+                        "Use a physical device", "If runtime verification is unavailable",
+                        "report what remains unverified", "do not treat compilation or unit tests as equivalent evidence",
                         "Validate distributables", "without weakening assertions or budgets"],
         }
         for name, required in phrases.items():

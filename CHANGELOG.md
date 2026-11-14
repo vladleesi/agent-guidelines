@@ -1,5 +1,27 @@
 # Changelog
 
+## 1.10.0 — 2026-11-14
+
+### Reusable agent guidelines
+
+- Require runtime verification of changed interactive features in an appropriate
+  browser, emulator, simulator, or physical device, including affected states and
+  platforms, runtime errors, and explicit reporting of verification gaps.
+- Add diff-scoped, evidence-backed review findings to `agent-workflow`, including
+  indirect breakage, deduplication, and an explicit no-findings outcome.
+- Extend long-task checkpoints with objectives, constraints, failed approaches,
+  and evidence references while reusing existing task state.
+- Tighten exploration and documentation guidance without removing constraints.
+  Clarify that read-only reviews also protect new project files while permitting
+  ordinary check artifacts, and keep required checks explicit in standalone testing
+  guidance. Project policy can require repeated checks.
+
+### Repository updates
+
+- Document runtime verification, review, and checkpoint rationale, make review
+  routing explicit, and refresh context measurements and README pins.
+  Module selections, sync interfaces, and managed markers remain compatible.
+
 ## 1.9.0 — 2026-11-12
 
 ### Reusable agent guidelines

@@ -9,17 +9,23 @@
   verify migrations with representative disposable data.
 - Validate distributables when build output or delivery changes; a dev server
   cannot establish production behavior/performance.
-- Fix failures without weakening assertions or budgets just to pass.
+- After implementing or changing an interactive feature, run the affected workflow
+  in an appropriate browser, emulator, simulator, or physical device; cover affected
+  states and platforms. Verify the main interaction, relevant failure states, and
+  visible results; inspect runtime errors. Use a physical device when the changed
+  behavior depends on capabilities or performance the simulated environment cannot
+  represent. If runtime verification is unavailable, report what remains unverified
+  and why; do not treat compilation or unit tests as equivalent evidence.
+- Run project-required checks. Fix failures without weakening assertions or budgets
+  just to pass.
 
 ## Task guidance
 
-- Focus checks on changed behavior; broaden for shared APIs, packaging, or
-  platform changes. Docs-only edits normally need link, example, and diff review
+- Focus additional checks on changed behavior; broaden for shared APIs, packaging,
+  or platform changes. Docs-only edits normally need link, example, and diff review
   unless project policy requires more.
 - Test observable success, boundary, and failure contracts, not incidental structure.
   Reproduce bugs and add regression tests when practical; cover shared causes and
   affected integrations beyond the symptom.
 - Mock external boundaries where appropriate; retain integration coverage for
   serialization, persistence, framework behavior, and contracts mocks can hide.
-- Use interaction, visual, browser, or device checks where static tests cannot
-  establish UI correctness; cover affected states and platforms.
