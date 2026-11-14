@@ -12,7 +12,7 @@ Ask the agent working in your project:
 
 ```text
 Import relevant rules from https://github.com/vladleesi/agent-guidelines
-at v1.10.0 as a one-time, self-contained addition to this repository.
+at v1.11.0 as a one-time, self-contained addition to this repository.
 
 1. Inspect instructions and agent discovery configuration; select relevant modules.
    Change only instruction-related files and attribution/license notices. Rewrite
@@ -63,7 +63,7 @@ Modules have no implicit dependencies. Select only what the project needs.
 | [agent-workflow](modules/agent-workflow.md) | Exploration, tools, required validation, completion |
 | [testing](modules/testing.md) | Focused checks and behavioral tests |
 | [security](modules/security.md) | Trust boundaries, secrets, privacy, dependencies, third-party rights |
-| [git](modules/git.md) | Commits, pushes, authorization, history safety |
+| [git](modules/git.md) | Commit conventions, pushes, authorization, history safety |
 | [ci](modules/ci.md) | Checks, failure investigation, workflow security and costs |
 | [release](modules/release.md) | Versioning, changelogs, tags, publication safeguards |
 | [deployment](modules/deployment.md) | Hosting, infrastructure, rollback, cloud costs |
@@ -99,7 +99,7 @@ It includes **all selected rules inline**; section headings do not defer loading
 From your project's root, set the release once:
 
 ```sh
-guidelines_ref=v1.10.0
+guidelines_ref=v1.11.0
 guidelines_dir="/tmp/agent-guidelines-$guidelines_ref"
 
 git clone --branch "$guidelines_ref" --depth 1 \

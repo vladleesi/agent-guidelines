@@ -317,6 +317,16 @@ class SyncTests(unittest.TestCase):
                     for phrase in ("For change reviews", "failed approaches"):
                         self.assertIn(phrase, workflow)
                         self.assertNotIn(phrase, root)
+                if "git" in selection:
+                    route = next(line for line in root.splitlines()
+                                 if "`docs/agent-guidance/git.md`" in line)
+                    self.assertIn("Preparing commits", route)
+                    self.assertIn("choosing/reviewing commit messages", route)
+                    guidance = files["docs/agent-guidance/git.md"].decode()
+                    for phrase in ("<type>(<optional-scope>): <imperative description>",
+                                   "`feat(api)!:`", "BREAKING CHANGE:"):
+                        self.assertIn(phrase, guidance)
+                        self.assertNotIn(phrase, root)
                 imported = "\n".join(value.decode() for path, value in files.items()
                                      if path.endswith(".md"))
                 def bullets(text):
@@ -351,7 +361,7 @@ class SyncTests(unittest.TestCase):
                         self.assertEqual(files[path], (nested.parents[1] / path).read_bytes())
 
     def test_critical_rules_stay_in_core_without_companion_modules(self):
-        for name in ("security", "git", "deployment"):
+        for name in ("security", "deployment"):
             content = (ROOT / "modules" / f"{name}.md").read_text(encoding="utf-8")
             self.assertNotIn("## Task guidance", content)
         phrases = {
@@ -385,7 +395,17 @@ class SyncTests(unittest.TestCase):
                         "Report missing infrastructure"],
             "git": ["Commit and push only", "Treat rejected pushes", "explicit permission",
                     "Use current Git author settings", "Overriding identity or adding co-author trailers",
-                    "AI/tool attribution, or optional metadata requires explicit user approval"],
+                    "AI/tool attribution, or optional metadata requires explicit user approval",
+                    "check repository instructions, tooling, relevant commit history",
+                    "recorded user preferences", "Follow adopted Conventional Commits",
+                    "where no style is established", "Respect other styles",
+                    "Never replace an established style without explicit user approval",
+                    "if declined or unavailable, preserve it without repeated suggestions",
+                    "Do not rewrite historical commits merely to standardize messages",
+                    "Keep commit-style guidance advisory",
+                    "requires explicit authorization",
+                    "do not adopt SemVer, bump versions, or trigger releases",
+                    "versioning, release, and authorization rules still apply"],
             "security": ["Never commit credentials", "Before committing or sharing",
                          "History cleanup requires separate explicit authorization", "Deny by default",
                          "resource-level authorization", "Never invent protocols",

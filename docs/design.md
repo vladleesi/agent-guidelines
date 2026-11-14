@@ -73,6 +73,7 @@ publication, and deployment effects before acting; reading grants no authorizati
 | Python code, packaging, or interpreter/dependency changes | `docs/agent-guidance/python.md` |
 | Services, APIs, persistence, or backend concurrency | `docs/agent-guidance/backend.md` |
 | Browser UI, navigation, assets, or public web content | `docs/agent-guidance/frontend.md` |
+| Preparing commits or choosing/reviewing commit messages | `docs/agent-guidance/git.md` |
 | CI status/failures, workflows, actions, or workflow-triggering operations | `docs/agent-guidance/ci.md` |
 | Versions, changelogs, tags, release artifacts, or publication | `docs/agent-guidance/release.md` |
 ```
@@ -82,9 +83,9 @@ file, and representative tasks read guidance from both root and nested working
 directories. Apply the one-time import checks above; staging `--check` cannot verify
 routing or the final import. Do not use eager `@` imports for task files.
 
-Git, security, and deployment contain only Core rules. Core retains security,
+Security and deployment contain only Core rules. Core retains security,
 authorization, cost, and required-verification safeguards for each selected module,
-including when used alone. CI tuning and SemVer mechanics use existing task routes.
+including when used alone. Commit messages, CI tuning, and SemVer mechanics use task routes.
 Keep imported bullets intact even when they mix details with safeguards; collection
 maintainers may revise them, but consumers must preserve pinned wording.
 
@@ -98,6 +99,8 @@ Placement changes alone require no wording migration.
 v1.9 keeps module names and task routes compatible. When updating a one-time
 import, reconcile full selected modules so relocated Core rules do not remain
 deferred. Existing pinned copies remain valid; maintained sync needs no migration.
+For v1.11 Core + Task updates selecting `git`, add its task file and commit route;
+keep style-selection and authorization safeguards in Core.
 
 ### Maintained synchronization
 
@@ -180,8 +183,8 @@ lines and ending with a newline.
 
 UTF-8 sizes include routing, titles, and attribution with a 40-character commit;
 exclude project/global rules, MIT notice contents, history, and tool framing.
-Small selections for Git, CI, or releases stay inline. Compared with the v1.8.0
-fixtures, Core + Task roots change from 12,459, 12,665, and 14,077 bytes respectively,
+At v1.10.0, small Git, CI, or release selections stayed inline. Compared with the
+v1.8.0 fixtures, Core + Task roots change from 12,459, 12,665, and 14,077 bytes respectively,
 while retaining relocated safeguards and adding runtime verification.
 
 Task reads add context: root plus general, workflow, testing, and the relevant
@@ -194,6 +197,15 @@ Keep safeguards intact regardless of root size. See [loading evidence and limits
 
 ## Curation decisions
 
+- Keep commit-style selection, approval, and history safeguards in `git` Core;
+  route message formatting through its commit task file. Recommend
+  [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/)
+  when no style exists; preserve established styles without explicit approval to
+  change them. Imperative, lowercase descriptions are collection preferences.
+  The specification supports optional scopes, additional types, and either `!`
+  or a `BREAKING CHANGE:` footer for incompatibilities. Its SemVer associations
+  do not adopt consumer versioning or authorize releases. Guidance adds no
+  enforcement tooling; release policy remains independently owned by `release`.
 - Keep interactive-feature runtime verification in `testing` Core so it applies
   before task guidance is loaded, including when testing is selected alone.
   Run the changed workflow in an appropriate browser, emulator, simulator, or

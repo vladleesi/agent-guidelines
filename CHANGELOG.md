@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.11.0 — 2026-11-14
+
+### Reusable agent guidelines
+
+- Recommend Conventional Commits in `git` with concise imperative subjects,
+  meaningful scopes, common types, examples, and accurate breaking-change markers.
+  Inspect instructions, tooling, history, and user preferences first; preserve
+  established styles without explicit approval, avoid repeated suggestions, and
+  never rewrite history merely to standardize messages.
+- Keep guidance advisory: enforcement tooling requires explicit authorization;
+  commit syntax does not adopt SemVer, authorize version bumps, or trigger releases.
+
+### Repository updates
+
+- Add explicit commit-message task routing and standalone Core placement coverage;
+  document specification rationale and update README release pins. Existing inline
+  and maintained imports remain compatible. When updating a Core + Task import,
+  add the Git task file and route while retaining Git safeguards in Core.
+
 ## 1.10.0 — 2026-11-14
 
 ### Reusable agent guidelines
