@@ -1,6 +1,6 @@
 # agent-guidelines
 
-[![Checks](https://img.shields.io/github/check-suites/vladleesi/agent-guidelines/main?style=flat-square&label=checks)](https://github.com/vladleesi/agent-guidelines/actions?query=branch%3Amain) [![Release](https://img.shields.io/github/v/release/vladleesi/agent-guidelines?style=flat-square&color=7c3aed)](https://github.com/vladleesi/agent-guidelines/releases/latest) [![MIT](https://img.shields.io/github/license/vladleesi/agent-guidelines?style=flat-square&color=0ea5e9)](LICENSE)
+[![Checks](https://img.shields.io/github/check-suites/vladleesi/agent-guidelines/main?style=for-the-badge&label=checks)](https://github.com/vladleesi/agent-guidelines/actions?query=branch%3Amain) [![Release](https://img.shields.io/github/v/release/vladleesi/agent-guidelines?style=for-the-badge&color=7c3aed)](https://github.com/vladleesi/agent-guidelines/releases/latest) [![MIT](https://img.shields.io/github/license/vladleesi/agent-guidelines?style=for-the-badge&color=0ea5e9)](LICENSE)
 
 Import selected Markdown rules from a pinned release. Keep core rules in
 `AGENTS.md` and read local task guidance when needed. **Project rules override
