@@ -309,6 +309,15 @@ class SyncTests(unittest.TestCase):
                             for name in selection}
                 files = one_time_files(contents, commit, ref="v1.0.0")
                 root = files["AGENTS.md"].decode()
+                if "general" in selection:
+                    route = next(line for line in root.splitlines()
+                                 if "`docs/agent-guidance/general.md`" in line)
+                    self.assertIn("Drafting, editing, or reviewing docs and other project prose", route)
+                    guidance = files["docs/agent-guidance/general.md"].decode()
+                    for phrase in ("Replace buzzwords, hype, and vague benefits",
+                                   "Use em dashes sparingly"):
+                        self.assertIn(phrase, guidance)
+                        self.assertNotIn(phrase, root)
                 if "agent-workflow" in selection:
                     route = next(line for line in root.splitlines()
                                  if "`docs/agent-guidance/agent-workflow.md`" in line)

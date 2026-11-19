@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.12.0 — 2026-11-18
+
+### Reusable agent guidelines
+
+- Add plain-language guidance in `general` for docs and other project prose.
+  Ground claims in specific details and edit out filler, hype, and forced patterns.
+
+### Repository updates
+
+- Extend the `general` task route to project prose, verify its placement, and
+  update README release pins.
+
 ## 1.11.0 — 2026-11-14
 
 ### Reusable agent guidelines

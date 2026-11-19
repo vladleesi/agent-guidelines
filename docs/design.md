@@ -65,7 +65,7 @@ publication, and deployment effects before acting; reading grants no authorizati
 
 | Work | Read first |
 | --- | --- |
-| Code, configuration, dependency, or documentation changes/review | `docs/agent-guidance/general.md` |
+| Code, configuration, or dependency changes and reviews. Drafting, editing, or reviewing docs and other project prose | `docs/agent-guidance/general.md` |
 | Investigation, planning, change reviews, or tool use | `docs/agent-guidance/agent-workflow.md` |
 | Changes needing validation, test work, CI fixes, or release preparation | `docs/agent-guidance/testing.md` |
 | Kotlin, Gradle, Android, or Multiplatform | `docs/agent-guidance/kotlin.md` |
@@ -247,9 +247,11 @@ Keep safeguards intact regardless of root size. See [loading evidence and limits
   for specific exception handling, cleanup, or rethrowing.
 - Keep documentation guidance in `general`: reader needs and scoped replacement
   of stale or repetitive content control growth without size quotas. Preservation
-  and required verification stay in Core; writing guidance uses the existing
-  documentation route. Routine user-documentation cleanup does not authorize
-  shortening agent instructions.
+  and required verification stay in Core. The general task route covers docs and
+  other project prose. The writing rules leave room for audience, author voice,
+  and purposeful punctuation. Routine user-documentation cleanup does not
+  authorize shortening agent instructions. See [Google's voice and tone guide](https://developers.google.com/style/tone)
+  and [Digital.gov's plain language guidance](https://digital.gov/guides/plain-language/principles/short-simple).
 - Keep optimization scope and reversion safeguards in `general` Core. An
   optimization request does not authorize a redesign, new files or dependencies,
   or surrounding component changes; existing explicit approval still applies.
